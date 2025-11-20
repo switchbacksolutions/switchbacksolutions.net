@@ -1,8 +1,11 @@
 ---
+import ContourMap from './ContourMap.astro';
 ---
 
 <section class="hero">
-  <div class="hero-background"></div>
+  <div class="hero-background">
+    <ContourMap />
+  </div>
   <div class="hero-content">
     <h1 class="hero-title">Tech that Moves with You</h1>
     <p class="hero-subtitle">Simple, durable technology for teams that want to keep moving forward.</p>
@@ -19,6 +22,7 @@
     justify-content: center;
     overflow: hidden;
     padding-top: 80px;
+    background-color: var(--color-light);
   }
 
   .hero-background {
@@ -27,32 +31,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('/images/hero/hero-background.jpg');
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
     z-index: 1;
+    color: var(--color-dark);
   }
 
-  .hero-background::before {
-    content: '';
-    position: absolute;
-    top: 80px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(248, 248, 247, 1) 0%,
-      rgba(248, 248, 247, 0.8) 5%,
-      rgba(248, 248, 247, 0.4) 10%,
-      rgba(248, 248, 247, 0) 20%,
-      rgba(0, 0, 0, 0) 50%,
-      rgba(0, 0, 0, 0.2) 80%,
-      rgba(0, 0, 0, 0.4) 100%
-    );
-    z-index: 1;
-  }
 
   .hero-content {
     position: relative;
@@ -60,27 +42,24 @@
     text-align: center;
     max-width: 800px;
     padding: 2rem;
-    color: white;
   }
 
   .hero-title {
-    font-family: 'Raleway', serif;
+    font-family: 'Raleway', sans-serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 600;
-    color: white;
+    color: var(--color-dark);
     margin-bottom: 1.5rem;
     line-height: 1.1;
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
   }
 
   .hero-subtitle {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: clamp(1.125rem, 2vw, 1.5rem);
-    color: white;
+    color: var(--color-dark);
     margin-bottom: 2.5rem;
     line-height: 1.6;
-    opacity: 0.95;
-    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0.8;
   }
 
   .hero-cta {
@@ -93,13 +72,13 @@
     font-weight: 500;
     font-size: 1rem;
     transition: background-color 0.2s, transform 0.2s;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
   .hero-cta:hover {
     background-color: #d4944a;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
   @media (max-width: 768px) {
@@ -108,12 +87,13 @@
       padding-top: 70px;
     }
 
-    .hero-background::before {
-      top: 70px;
-    }
-
     .hero-content {
       padding: 1.5rem;
+    }
+
+    .signature-contour {
+      width: 150%;
+      height: 150%;
     }
   }
 </style>
