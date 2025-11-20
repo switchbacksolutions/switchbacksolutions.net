@@ -1,0 +1,157 @@
+---
+---
+
+<header class="header">
+  <div class="header-container">
+    <a href="/" class="logo">
+      <div class="logo-icon">S</div>
+      <div class="logo-text">
+        <div class="logo-primary">SWITCHBACK</div>
+        <div class="logo-secondary">SOLUTIONS</div>
+      </div>
+    </a>
+    
+    <nav class="nav">
+      <a href="#work" class="nav-link">WORK</a>
+      <a href="#about" class="nav-link">ABOUT</a>
+      <a href="#services" class="nav-link">SERVICES</a>
+    </nav>
+    
+    <a href="#contact" class="cta-button">Work with Me</a>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(248, 248, 247, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(31, 31, 31, 0.1);
+  }
+
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-dark);
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--color-dark);
+    border: 2px solid var(--color-dark);
+    border-radius: 4px;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .logo-primary {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    color: var(--color-dark);
+  }
+
+  .logo-secondary {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--color-dark);
+    opacity: 0.8;
+  }
+
+  .nav {
+    display: flex;
+    gap: 2rem;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav-link {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    color: var(--color-dark);
+    transition: opacity 0.2s;
+  }
+
+  .nav-link:hover {
+    opacity: 0.7;
+  }
+
+  .cta-button {
+    background-color: var(--color-accent);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background-color 0.2s, transform 0.2s;
+    white-space: nowrap;
+  }
+
+  .cta-button:hover {
+    background-color: #d4944a;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    .header-container {
+      padding: 1rem 1.5rem;
+    }
+
+    .nav {
+      display: none;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      font-size: 1.25rem;
+    }
+
+    .logo-primary {
+      font-size: 0.875rem;
+    }
+
+    .logo-secondary {
+      font-size: 0.65rem;
+    }
+
+    .cta-button {
+      padding: 0.625rem 1.25rem;
+      font-size: 0.85rem;
+    }
+  }
+</style>
+
+
