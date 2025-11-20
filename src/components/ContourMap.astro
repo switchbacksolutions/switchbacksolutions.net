@@ -1,0 +1,303 @@
+---
+// MapLibre GL JS component for displaying contour lines from DEM tiles
+---
+
+<div class="contour-map-container">
+  <!-- Static placeholder image that shows immediately -->
+  <div class="contour-placeholder">
+    <div class="contour-placeholder-wrapper">
+      <div class="contour-placeholder-image"></div>
+    </div>
+    <div class="contour-placeholder-wrapper contour-placeholder-wrapper-2">
+      <div class="contour-placeholder-image"></div>
+    </div>
+  </div>
+  
+  <!-- MapLibre maps (hidden until loaded) -->
+  <div class="contour-map-wrapper" id="map-wrapper-1">
+    <div id="contour-map" class="contour-map"></div>
+  </div>
+  <div class="contour-map-wrapper contour-map-wrapper-2" id="map-wrapper-2">
+    <div id="contour-map-2" class="contour-map"></div>
+  </div>
+</div>
+
+<script>
+  import maplibregl from 'maplibre-gl';
+  import 'maplibre-gl/dist/maplibre-gl.css';
+  // @ts-ignore - maplibre-contour doesn't have TypeScript definitions
+  import mlcontour from 'maplibre-contour';
+
+  console.log('ContourMap script loaded', { maplibregl, mlcontour });
+
+  function initContourMap() {
+    // Location from the demo (Alps region)
+    const mapCenter: [number, number] = [11.3229, 47.2738];
+
+    // Create DEM source for contour generation
+    const demSource = new mlcontour.DemSource({
+      url: 'https://demotiles.maplibre.org/terrain-tiles/{z}/{x}/{y}.png',
+      encoding: 'mapbox',
+      maxzoom: 12,
+      worker: true // offload contour line computation to a web worker
+    });
+
+    // Register dynamic vector tile provider that generates contour lines
+    demSource.setupMaplibre(maplibregl);
+
+    const mapStyle: maplibregl.StyleSpecification = {
+      version: 8,
+      glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
+      sources: {
+        hillshadeSource: {
+          type: 'raster-dem',
+          // share cached raster-dem tiles with the contour source
+          tiles: [demSource.sharedDemProtocolUrl],
+          tileSize: 512,
+          maxzoom: 12
+        },
+        contourSource: {
+          type: 'vector',
+          tiles: [
+            demSource.contourProtocolUrl({
+              multiplier: 1, // meters (can use 3.28084 for feet)
+              overzoom: 1,
+              thresholds: {
+                // zoom: [minor, major] - contour intervals in meters
+                11: [200, 1000],
+                12: [100, 500],
+                13: [100, 500],
+                14: [50, 200],
+                15: [20, 100]
+              },
+              elevationKey: 'ele',
+              levelKey: 'level',
+              contourLayer: 'contours'
+            })
+          ],
+          maxzoom: 15
+        }
+      },
+      layers: [
+        {
+          id: 'hills',
+          type: 'hillshade',
+          source: 'hillshadeSource',
+          layout: { visibility: 'visible' },
+          paint: { 'hillshade-exaggeration': 0.25 }
+        },
+        {
+          id: 'contours',
+          type: 'line',
+          source: 'contourSource',
+          'source-layer': 'contours',
+          paint: {
+            'line-opacity': 0.5,
+            // "major" contours have level=1, "minor" have level=0
+            'line-width': ['match', ['get', 'level'], 1, 1, 0.5]
+          }
+        }
+      ]
+    };
+
+    // Initialize first map
+    const mapContainer1 = document.getElementById('contour-map');
+    if (mapContainer1) {
+      const map1 = new maplibregl.Map({
+        container: 'contour-map',
+        style: mapStyle,
+        center: mapCenter,
+        zoom: 13,
+        pitch: 0,
+        bearing: 0,
+        interactive: false,
+        attributionControl: false
+      });
+
+      // Apply filter on load and after render to prevent flash
+      const applyFilter1 = () => {
+        const canvasContainer = map1.getCanvasContainer();
+        if (canvasContainer) {
+          canvasContainer.style.filter = 'grayscale(100%) brightness(1.1) contrast(0.9) opacity(0.2)';
+        }
+      };
+      
+      map1.on('load', () => {
+        console.log('Map 1 loaded');
+        applyFilter1();
+        setTimeout(applyFilter1, 100);
+        // Hide placeholder when map loads
+        const placeholder = document.querySelector('.contour-placeholder');
+        const mapWrapper1 = document.getElementById('map-wrapper-1');
+        if (placeholder && mapWrapper1) {
+          mapWrapper1.style.opacity = '1';
+        }
+      });
+      
+      map1.on('render', () => {
+        applyFilter1();
+      });
+      
+      // Also try to apply immediately
+      setTimeout(applyFilter1, 200);
+    }
+
+    // Initialize second map for seamless looping
+    const mapContainer2 = document.getElementById('contour-map-2');
+    if (mapContainer2) {
+      const map2 = new maplibregl.Map({
+        container: 'contour-map-2',
+        style: mapStyle,
+        center: mapCenter,
+        zoom: 13,
+        pitch: 0,
+        bearing: 0,
+        interactive: false,
+        attributionControl: false
+      });
+
+      // Apply filter on load and after render to prevent flash
+      const applyFilter2 = () => {
+        const canvasContainer = map2.getCanvasContainer();
+        if (canvasContainer) {
+          canvasContainer.style.filter = 'grayscale(100%) brightness(1.1) contrast(0.9) opacity(0.2)';
+        }
+      };
+      
+      map2.on('load', () => {
+        console.log('Map 2 loaded');
+        applyFilter2();
+        setTimeout(applyFilter2, 100);
+        // Hide placeholder when both maps are loaded
+        const mapWrapper2 = document.getElementById('map-wrapper-2');
+        if (mapWrapper2) {
+          mapWrapper2.style.opacity = '1';
+          // Once both are loaded, fade out placeholder
+          const placeholder = document.querySelector('.contour-placeholder');
+          if (placeholder) {
+            (placeholder as HTMLElement).style.opacity = '0';
+            setTimeout(() => {
+              (placeholder as HTMLElement).style.display = 'none';
+            }, 500);
+          }
+        }
+      });
+      
+      map2.on('render', () => {
+        applyFilter2();
+      });
+      
+      // Also try to apply immediately
+      setTimeout(applyFilter2, 200);
+    }
+  }
+
+  // Initialize on page load
+  if (typeof window !== 'undefined') {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initContourMap);
+    } else {
+      initContourMap();
+    }
+  }
+</script>
+
+<style>
+  .contour-map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    overflow: hidden;
+    background-color: var(--color-light);
+  }
+
+  /* Static placeholder */
+  .contour-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    z-index: 1;
+    transition: opacity 0.5s ease-out;
+  }
+
+  .contour-placeholder-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: scrollDown 30s linear infinite;
+  }
+
+  .contour-placeholder-wrapper-2 {
+    top: 100%;
+    animation: scrollDown 30s linear infinite;
+    animation-delay: 0s;
+  }
+
+  .contour-placeholder-image {
+    width: 100%;
+    height: 100%;
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 98px,
+        rgba(31, 31, 31, 0.03) 98px,
+        rgba(31, 31, 31, 0.03) 100px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 98px,
+        rgba(31, 31, 31, 0.02) 98px,
+        rgba(31, 31, 31, 0.02) 100px
+      );
+    background-size: 100px 100px;
+    filter: grayscale(100%) brightness(1.1) contrast(0.9) opacity(0.2);
+  }
+
+  /* MapLibre maps - hidden until loaded */
+  .contour-map-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: scrollDown 30s linear infinite;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+    z-index: 2;
+  }
+
+  .contour-map-wrapper-2 {
+    top: 100%;
+    animation: scrollDown 30s linear infinite;
+    animation-delay: 0s;
+  }
+
+  .contour-map {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+  }
+
+  /* Hide MapLibre controls and attribution */
+  .contour-map :global(.maplibregl-ctrl),
+  .contour-map :global(.maplibregl-ctrl-attrib) {
+    display: none !important;
+  }
+
+  @keyframes scrollDown {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+</style>
