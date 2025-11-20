@@ -1,0 +1,353 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import { portfolioItems } from '../data/portfolio';
+---
+
+<BaseLayout title="Work - Switchback Solutions">
+  <Header />
+  
+  <main>
+    <section class="work-hero">
+      <div class="container">
+        <h1 class="work-title">Work.</h1>
+        <p class="work-subtitle">
+          Simple or complex, big or small. I've seen it all.
+        </p>
+        <p class="work-description">
+          I've helped re-design large non-profits, developed native desktop applications, 
+          created popular open source projects, trained world-class agencies and built 
+          some really cool websites for some really cool brands.
+        </p>
+      </div>
+    </section>
+
+    <section class="portfolio-section">
+      <div class="container">
+        <div class="portfolio-grid">
+          {portfolioItems.map((item) => (
+            <a href={`/work/${item.id}`} class="portfolio-item-link">
+              <article class="portfolio-item">
+                {item.screenshot && (
+                  <div class="portfolio-image">
+                    <img src={item.screenshot} alt={item.title} />
+                  </div>
+                )}
+                <div class="portfolio-content">
+                  <div class="portfolio-header">
+                    <h2 class="portfolio-title">{item.title}</h2>
+                    {item.year && <span class="portfolio-year">{item.year}</span>}
+                  </div>
+                  <p class="portfolio-client">{item.client}</p>
+                  <p class="portfolio-description">{item.description}</p>
+                  
+                  <div class="portfolio-tags">
+                    <div class="tag-group">
+                      <span class="tag-label">Categories:</span>
+                      {item.categories.map((cat) => (
+                        <span class="tag">{cat}</span>
+                      ))}
+                    </div>
+                    <div class="tag-group">
+                      <span class="tag-label">Technologies:</span>
+                      {item.technologies.map((tech) => (
+                        <span class="tag tag-tech">{tech}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <div class="logo-icon-small">S</div>
+          <div class="footer-logo-text">
+            <div>SWITCHBACK</div>
+            <div>SOLUTIONS</div>
+          </div>
+        </div>
+        <p class="footer-tagline">Tech that Moves with You</p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Switchback Solutions. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>
+
+<style>
+  main {
+    padding-top: 80px;
+  }
+
+  .work-hero {
+    padding: 5rem 0 3rem;
+    background-color: var(--color-light);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .work-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .work-subtitle {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    color: var(--color-dark);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+
+  .work-description {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.125rem;
+    color: var(--color-dark);
+    line-height: 1.8;
+    max-width: 800px;
+    opacity: 0.8;
+  }
+
+  .portfolio-section {
+    padding: 4rem 0;
+    background-color: var(--color-light);
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
+  }
+
+  .portfolio-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .portfolio-item {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .portfolio-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .portfolio-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-color: var(--color-secondary);
+  }
+
+  .portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .portfolio-item:hover .portfolio-image img {
+    transform: scale(1.05);
+  }
+
+  .portfolio-content {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .portfolio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+    gap: 1rem;
+  }
+
+  .portfolio-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0;
+    line-height: 1.2;
+    flex: 1;
+  }
+
+  .portfolio-year {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.875rem;
+    color: var(--color-dark);
+    opacity: 0.6;
+    white-space: nowrap;
+  }
+
+  .portfolio-client {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+    opacity: 0.7;
+  }
+
+  .portfolio-description {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-dark);
+    margin-bottom: 1.5rem;
+  }
+
+  .portfolio-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .tag-label {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .tag {
+    display: inline-block;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--color-secondary);
+    color: var(--color-dark);
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .tag-tech {
+    background-color: rgba(46, 93, 71, 0.1);
+    color: var(--color-primary);
+  }
+
+  .footer {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 3rem 0 2rem;
+  }
+
+  .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .logo-icon-small {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: white;
+    border: 2px solid white;
+    border-radius: 4px;
+  }
+
+  .footer-logo-text {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+  }
+
+  .footer-tagline {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.875rem;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 768px) {
+    .work-hero {
+      padding: 3rem 0 2rem;
+    }
+
+    .container {
+      padding: 0 1.5rem;
+    }
+
+    .portfolio-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .portfolio-item {
+      padding: 1.5rem;
+    }
+
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
+
