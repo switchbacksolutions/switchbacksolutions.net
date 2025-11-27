@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
+
+const currentYear = new Date().getFullYear();
 ---
 
 <BaseLayout>
@@ -121,7 +123,7 @@ import Hero from '../components/Hero.astro';
         <p class="footer-tagline">Tech that Moves with You</p>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 Switchback Solutions. All rights reserved.</p>
+        <p>&copy; {currentYear} Switchback Solutions. All rights reserved.</p>
       </div>
     </div>
   </footer>
