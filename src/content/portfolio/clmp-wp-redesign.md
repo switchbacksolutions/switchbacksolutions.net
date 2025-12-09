@@ -18,10 +18,6 @@ screenshot: "/images/work/clmp-wp-redesign.jpg"
 featured: true
 ---
 
-## Project Overview
-
-The Community of Literary Magazines and Presses (CLMP) needed a complete overhaul of their WordPress site to better serve their members, especially those increasingly using mobile devices.
-
 > Our members are increasingly using mobile. Now our site reflects that reality.
 
 ## Key Achievements

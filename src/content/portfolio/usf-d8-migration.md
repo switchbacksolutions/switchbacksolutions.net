@@ -18,10 +18,6 @@ screenshot: "/images/work/usf-d8-migration.jpg"
 featured: true
 ---
 
-## Project Overview
-
-The University of San Francisco needed to migrate their complex Drupal 7 Open Atrium intranet to Drupal 8 to address critical issues with usability, performance, extensibility, and maintainability.
-
 ## Key Challenges
 
 ### Complex Migration

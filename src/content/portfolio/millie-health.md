@@ -27,10 +27,6 @@ screenshot: "/images/work/millie-health.jpg"
 featured: true
 ---
 
-## Project Overview
-
-Worked with Millie Health Inc. to establish a robust infrastructure foundation and development workflow for their healthcare platform. The project involved containerizing the application stack, creating automated deployment pipelines, setting up cloud infrastructure, and integrating critical third-party services for a React Native mobile healthcare application.
-
 ## Key Achievements
 
 ### Docker Infrastructure Setup

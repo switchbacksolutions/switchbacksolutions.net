@@ -20,10 +20,6 @@ screenshot: "/images/work/nonprofit-platform.jpg"
 featured: true
 ---
 
-## Project Overview
-
-This project involved a complete overhaul of one of the internet's most popular poetry repositories, serving millions of readers and writers worldwide.
-
 ## Key Achievements
 
 - Migrated from legacy systems to modern, accessible architecture

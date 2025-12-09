@@ -18,10 +18,6 @@ year: "2021"
 screenshot: "/images/work/csi-integrations.jpg"
 ---
 
-## Project Overview
-
-CSi needed to expand their storage offerings to include their own S3 powered storage, enabling users to store and access their schematics through a mobile application.
-
 > Expanding our storage offerings allows more users to engage with our app.
 
 ## Key Achievements

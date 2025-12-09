@@ -19,17 +19,13 @@ screenshot: "/images/work/chenmed-d8-redesign.jpg"
 featured: true
 ---
 
-## Project Overview
-
-ChenMed needed a complete redesign of their flagship web property to better communicate their mission of restoring the doctor-patient relationship in modern healthcare to both physicians and patients.
-
-> Components empower our marketing team to better tell our story the way we want while always maintaining brand consistency.
-
 ## Key Achievements
 
 ### Component-Driven Design
 
 Created **27 swappable and standardized components** that can be used across **13 layouts** and look good on desktop and mobile. This component system empowers the marketing team to build new pages while maintaining brand consistency.
+
+> Components empower our marketing team to better tell our story the way we want while always maintaining brand consistency.
 
 ### Fast Delivery
 
