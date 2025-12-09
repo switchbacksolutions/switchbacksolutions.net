@@ -18,10 +18,6 @@ screenshot: "/images/work/gohealth-d7-redesign.jpg"
 featured: true
 ---
 
-## Project Overview
-
-GoHealth needed a redesign that would not only help patients find centers quickly, but also effectively communicate why GoHealth should be their urgent care provider of choice.
-
 > Patients can now easily locate services and clinics close to them.
 
 ## Key Achievements

@@ -18,10 +18,6 @@ url: "https://lando.dev"
 featured: true
 ---
 
-## Project Overview
-
-Lando is a local development tool that makes it easy to run any stack on your local machine. It's used by thousands of developers worldwide.
-
 ## Key Features
 
 - Easy local development environment setup

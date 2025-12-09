@@ -22,10 +22,6 @@ screenshot: "/images/work/cvt-portal.jpg"
 featured: true
 ---
 
-## Project Overview
-
-Architected and built MyCVT, a comprehensive subscriber portal for California's Valued Trust, enabling their members to securely access and manage their healthcare benefits, view claims, and interact with their coverage information. The solution required a robust, scalable architecture to handle sensitive healthcare data while providing an intuitive user experience.
-
 ## Key Achievements
 
 ### Solution Architecture

@@ -30,10 +30,6 @@ screenshot: "/images/work/ai-infrastructure.jpg"
 featured: true
 ---
 
-## Project Overview
-
-Built a comprehensive infrastructure automation and CI/CD platform for an AI startup developing code analysis tools to assess developer productivity. The platform needed to support both web application services and AI/ML workloads, requiring careful orchestration of multiple AWS services and automated deployment pipelines.
-
 ## Key Achievements
 
 ### Infrastructure as Code with Terraform

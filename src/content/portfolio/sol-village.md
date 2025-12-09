@@ -20,10 +20,6 @@ url: "https://www.solvillagenc.com"
 featured: true
 ---
 
-## Project Overview
-
-Sol Village needed a website that would communicate their mission of creating affordable, community-centered housing while building an engaged community of future residents, investors, and partners.
-
 ## Key Achievements
 
 ### Mission-Driven Design
