@@ -11,6 +11,7 @@ industries:
   - Nonprofit
 technologies:
   - VueJS
+  - NuxtJS
   - JavaScript
   - PHP
   - Drupal
