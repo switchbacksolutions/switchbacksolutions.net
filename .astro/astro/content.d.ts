@@ -141,6 +141,13 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"portfolio": {
+"ai-startup-infrastructure.md": {
+	id: "ai-startup-infrastructure.md";
+  slug: "ai-startup-infrastructure";
+  body: string;
+  collection: "portfolio";
+  data: InferEntrySchema<"portfolio">
+} & { render(): Render[".md"] };
 "chenmed-d8-redesign.md": {
 	id: "chenmed-d8-redesign.md";
   slug: "chenmed-d8-redesign";
@@ -162,6 +169,13 @@ declare module 'astro:content' {
   collection: "portfolio";
   data: InferEntrySchema<"portfolio">
 } & { render(): Render[".md"] };
+"cvt-subscriber-portal.md": {
+	id: "cvt-subscriber-portal.md";
+  slug: "cvt-subscriber-portal";
+  body: string;
+  collection: "portfolio";
+  data: InferEntrySchema<"portfolio">
+} & { render(): Render[".md"] };
 "gohealth-d7-redesign.md": {
 	id: "gohealth-d7-redesign.md";
   slug: "gohealth-d7-redesign";
@@ -172,6 +186,13 @@ declare module 'astro:content' {
 "lando.md": {
 	id: "lando.md";
   slug: "lando";
+  body: string;
+  collection: "portfolio";
+  data: InferEntrySchema<"portfolio">
+} & { render(): Render[".md"] };
+"millie-health.md": {
+	id: "millie-health.md";
+  slug: "millie-health";
   body: string;
   collection: "portfolio";
   data: InferEntrySchema<"portfolio">

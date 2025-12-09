@@ -10,11 +10,11 @@ categories:
 industries:
   - Nonprofit
 technologies:
-  - WordPress
-  - PHP
+  - Astro
   - JavaScript
+  - twentyCRM
   - Marketing Automation
-year: "2024"
+year: "2025"
 screenshot: "/images/work/sol-village.jpg"
 url: "https://www.solvillagenc.com"
 featured: true

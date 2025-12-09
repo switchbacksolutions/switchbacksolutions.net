@@ -9,9 +9,9 @@ industries:
   - Tech
 technologies:
   - JavaScript
-  - Node
+  - NodeJS
   - Docker
-  - Lando
+  - GitHub Actions
 year: "2021"
 screenshot: "/images/work/open-source.jpg"
 url: "https://lando.dev"

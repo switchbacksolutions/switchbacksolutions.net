@@ -47,18 +47,6 @@ const htmlContent = entry.body ? await marked(entry.body) : '';
         </div>
       </div>
 
-      {item.screenshot && (
-        <div class="detail-screenshot">
-          <div class="container">
-            <img 
-              src={item.screenshot} 
-              alt={`${item.title} screenshot`}
-              class="screenshot-image"
-            />
-          </div>
-        </div>
-      )}
-
       <div class="detail-content">
         <div class="container">
           <div class="detail-grid">
@@ -185,19 +173,6 @@ const htmlContent = entry.body ? await marked(entry.body) : '';
     color: var(--color-primary);
     margin: 0;
     line-height: 1.2;
-  }
-
-  .detail-screenshot {
-    padding: 3rem 0;
-    background-color: white;
-  }
-
-  .screenshot-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    display: block;
   }
 
   .detail-content {
@@ -427,10 +402,6 @@ const htmlContent = entry.body ? await marked(entry.body) : '';
 
     .container {
       padding: 0 1.5rem;
-    }
-
-    .detail-screenshot {
-      padding: 2rem 0;
     }
 
     .detail-content {
