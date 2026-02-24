@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import { getPortfolioItems } from '../data/portfolio';
 
+const currentYear = new Date().getFullYear();
+
 const portfolioItems = await getPortfolioItems();
 ---
 
@@ -74,7 +76,7 @@ const portfolioItems = await getPortfolioItems();
         <p class="footer-tagline">Tech that Moves with You</p>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 Switchback Solutions. All rights reserved.</p>
+        <p>&copy; {currentYear} Switchback Solutions. All rights reserved.</p>
       </div>
     </div>
   </footer>

@@ -140,7 +140,23 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"portfolio": {
+		"blog": {
+"pragmatic-devops-for-small-teams.md": {
+	id: "pragmatic-devops-for-small-teams.md";
+  slug: "pragmatic-devops-for-small-teams";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"when-to-build-vs-buy.md": {
+	id: "when-to-build-vs-buy.md";
+  slug: "when-to-build-vs-buy";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+};
+"portfolio": {
 "ai-startup-infrastructure.md": {
 	id: "ai-startup-infrastructure.md";
   slug: "ai-startup-infrastructure";
