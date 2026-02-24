@@ -28,8 +28,6 @@
   // @ts-ignore - maplibre-contour doesn't have TypeScript definitions
   import mlcontour from 'maplibre-contour';
 
-  console.log('ContourMap script loaded', { maplibregl, mlcontour });
-
   function initContourMap() {
     // Location from the demo (Alps region)
     const mapCenter: [number, number] = [11.3229, 47.2738];
@@ -123,23 +121,16 @@
       };
       
       map1.on('load', () => {
-        console.log('Map 1 loaded');
         applyFilter1();
-        setTimeout(applyFilter1, 100);
-        // Hide placeholder when map loads
-        const placeholder = document.querySelector('.contour-placeholder');
         const mapWrapper1 = document.getElementById('map-wrapper-1');
-        if (placeholder && mapWrapper1) {
+        if (mapWrapper1) {
           mapWrapper1.style.opacity = '1';
         }
       });
-      
+
       map1.on('render', () => {
         applyFilter1();
       });
-      
-      // Also try to apply immediately
-      setTimeout(applyFilter1, 200);
     }
 
     // Initialize second map for seamless looping
@@ -165,30 +156,23 @@
       };
       
       map2.on('load', () => {
-        console.log('Map 2 loaded');
         applyFilter2();
-        setTimeout(applyFilter2, 100);
-        // Hide placeholder when both maps are loaded
         const mapWrapper2 = document.getElementById('map-wrapper-2');
         if (mapWrapper2) {
           mapWrapper2.style.opacity = '1';
-          // Once both are loaded, fade out placeholder
-          const placeholder = document.querySelector('.contour-placeholder');
+          const placeholder = document.querySelector('.contour-placeholder') as HTMLElement | null;
           if (placeholder) {
-            (placeholder as HTMLElement).style.opacity = '0';
-            setTimeout(() => {
-              (placeholder as HTMLElement).style.display = 'none';
-            }, 500);
+            placeholder.style.opacity = '0';
+            placeholder.addEventListener('transitionend', () => {
+              placeholder.style.display = 'none';
+            }, { once: true });
           }
         }
       });
-      
+
       map2.on('render', () => {
         applyFilter2();
       });
-      
-      // Also try to apply immediately
-      setTimeout(applyFilter2, 200);
     }
   }
 

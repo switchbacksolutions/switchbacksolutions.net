@@ -5,3 +5,26 @@
 [build.environment]
   NODE_VERSION = "18"
 
+# Long-lived cache for Astro's content-hashed static assets
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Medium cache for public assets (images, fonts, favicon)
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# Short cache for HTML so updates are picked up quickly
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+

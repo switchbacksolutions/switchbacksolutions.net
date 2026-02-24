@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import { getCollection } from 'astro:content';
-import { marked } from 'marked';
 
 export async function getStaticPaths() {
   const portfolioEntries = await getCollection('portfolio');
@@ -27,7 +26,8 @@ const item = {
   url: entry.data.url,
   featured: entry.data.featured,
 };
-const htmlContent = entry.body ? await marked(entry.body) : '';
+const { Content } = await entry.render();
+const currentYear = new Date().getFullYear();
 ---
 
 <BaseLayout title={`${item.title} - Switchback Solutions`}>
@@ -54,8 +54,10 @@ const htmlContent = entry.body ? await marked(entry.body) : '';
               <div class="detail-description">
                 <h2>About This Project</h2>
                 <p>{item.fullDescription || item.description}</p>
-                {htmlContent && (
-                  <div class="detail-content-markdown" set:html={htmlContent} />
+                {entry.body && (
+                  <div class="detail-content-markdown">
+                    <Content />
+                  </div>
                 )}
               </div>
 
@@ -121,7 +123,7 @@ const htmlContent = entry.body ? await marked(entry.body) : '';
         <p class="footer-tagline">Tech that Moves with You</p>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 Switchback Solutions. All rights reserved.</p>
+        <p>&copy; {currentYear} Switchback Solutions. All rights reserved.</p>
       </div>
     </div>
   </footer>
