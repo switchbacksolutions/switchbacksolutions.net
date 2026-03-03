@@ -4,9 +4,10 @@ import { ViewTransitions } from 'astro:transitions';
 export interface Props {
   title?: string;
   description?: string;
+  markdownUrl?: string;
 }
 
-const { title = "Switchback Solutions", description = "Simple, durable technology for teams that want to keep moving forward." } = Astro.props;
+const { title = "Switchback Solutions", description = "Simple, durable technology for teams that want to keep moving forward.", markdownUrl } = Astro.props;
 ---
 
 <!doctype html>
@@ -45,6 +46,7 @@ const { title = "Switchback Solutions", description = "Simple, durable technolog
 
     <title>{title}</title>
     <link rel="alternate" type="text/markdown" href="/llms.txt" />
+    {markdownUrl && <link rel="alternate" type="text/markdown" href={markdownUrl} />}
 
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
