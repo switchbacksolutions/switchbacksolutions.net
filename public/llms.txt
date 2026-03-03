@@ -1,0 +1,27 @@
+# Switchback Solutions
+
+> Alec is a senior technical architect and AI engineer who works as a drop-in CTO or VP of Engineering for early-stage founders and companies with AI initiatives. He operates through Switchback Solutions and focuses on AI-first software development — helping teams figure out where AI actually moves the needle and then building it. Website: https://switchbacksolutions.net. Contact: hello@switchbacksolutions.net.
+
+## Services
+
+- [Fractional Technical Leadership](https://switchbacksolutions.net/): Drop-in CTO or VP of Engineering. Covers architecture decisions, vendor selection, technical roadmap, team and hiring guidance, and direct hands-on development. Ideal for early-stage companies that need serious technical leadership but aren't ready to hire a full-time executive.
+- [AI-First Product Development](https://switchbacksolutions.net/): Building products from the ground up with AI embedded from the start — not retrofitted later. For founders without a tech team who need a technical partner to move fast, stay lean, and make smart bets about what to build.
+- [AI Strategy & Implementation](https://switchbacksolutions.net/): For companies with an existing team and a specific AI goal. Identify the right problems for AI to solve, architect the right solution, and execute through to production. No proof-of-concepts that never ship.
+
+## About
+
+- [About Alec](https://switchbacksolutions.net/about): Background, approach, and what it looks like to work together.
+
+## Work & Portfolio
+
+- [Portfolio](https://switchbacksolutions.net/work): Selected case studies across AI infrastructure, healthcare platforms, subscriber portals, CMS migrations, and open source tooling.
+
+## Writing
+
+- [Blog](https://switchbacksolutions.net/blog): Technical writing on DevOps, infrastructure, AI strategy, and product development for lean teams.
+- [Pragmatic DevOps for Small Teams](https://switchbacksolutions.net/blog/pragmatic-devops-for-small-teams): A lean, high-leverage DevOps setup — CI/CD, managed platforms, observability — for teams of two to ten who want boring reliability without platform-engineering overhead.
+- [When to Build vs. Buy (and When to Borrow)](https://switchbacksolutions.net/blog/when-to-build-vs-buy): A framework for one of the most consequential technical decisions early-stage teams face, including a third path — open-source self-hosting — that doesn't get enough attention.
+
+## Contact
+
+- [Start a conversation](https://switchbacksolutions.net/contact): Describe your project and what kind of help you're looking for.
