@@ -1,7 +1,7 @@
 ---
 title: Pragmatic DevOps for Small Teams
 description: You don't need a platform engineering department to ship software reliably. Here's a lean DevOps setup that punches well above its weight.
-publishedDate: 2026-02-20
+publishedDate: 2025-12-15
 author: Alec
 tags: [DevOps, Infrastructure, Small Teams]
 ---
@@ -52,4 +52,4 @@ Documentation and simplicity aren't nice-to-haves. They're the difference betwee
 
 ---
 
-If you're putting together a DevOps setup for a small team and want a second opinion, [get in touch](/work). I'm happy to take a look at what you're working with.
+If you're putting together a DevOps setup for a small team and want a second opinion, [get in touch](/contact). I'm happy to take a look at what you're working with.
