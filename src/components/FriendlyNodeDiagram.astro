@@ -1,0 +1,185 @@
+---
+// No props — self-contained diagram
+---
+
+<figure class="fn-diagram-figure">
+  <div class="fn-canvas-wrapper">
+    <canvas
+      id="fn-diagram"
+      width="600"
+      height="420"
+      aria-label="Animated diagram showing a business as a node in the economic network, with orange dots representing Requests for Value flowing in and green dots representing Returns of Value flowing out to customers, suppliers, partners, and regulators."
+    ></canvas>
+  </div>
+  <figcaption>
+    Your business as a node in the economic network — receiving Requests for Value
+    (orange) and returning value (green) to customers, suppliers, partners, and regulators.
+  </figcaption>
+</figure>
+
+<style>
+  .fn-diagram-figure {
+    margin: 2.5rem 0;
+    padding: 1.5rem 1rem;
+    background: #f7faf8;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .fn-canvas-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .fn-canvas-wrapper canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .fn-diagram-figure figcaption {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: #888;
+    font-style: italic;
+  }
+</style>
+
+<script>
+  const canvas = document.getElementById('fn-diagram') as HTMLCanvasElement | null;
+  if (canvas && canvas.getContext) {
+    const ctx = canvas.getContext('2d')!;
+    const W = 600, H = 420;
+    const GREEN = '#2E5D47', GREEN_BG = '#EEF5F1', ORANGE = '#E8884A', TEAL = '#7BC5A0';
+
+    const center = { x: 300, y: 205, r: 65 };
+    const nodes = [
+      { x: 300, y:  60, r: 38, label: 'CUSTOMERS',  sub: 'orders, inquiries' },
+      { x:  80, y: 205, r: 38, label: 'SUPPLIERS',   sub: 'materials, data'  },
+      { x: 520, y: 205, r: 38, label: 'PARTNERS',    sub: 'channels, intel'  },
+      { x: 300, y: 360, r: 38, label: 'REGULATORS',  sub: 'filings, taxes'   },
+    ];
+
+    // Endpoints from edge of external node to edge of center node
+    function ep(node: typeof nodes[0]) {
+      const dx = center.x - node.x, dy = center.y - node.y;
+      const d = Math.sqrt(dx * dx + dy * dy);
+      return {
+        x1: node.x + dx / d * node.r, y1: node.y + dy / d * node.r,
+        x2: center.x - dx / d * center.r, y2: center.y - dy / d * center.r,
+      };
+    }
+
+    function lerp(e: ReturnType<typeof ep>, t: number) {
+      return { x: e.x1 + (e.x2 - e.x1) * t, y: e.y1 + (e.y2 - e.y1) * t };
+    }
+
+    // Two dots per connection: RFV (orange, inward) and ROV (teal, outward)
+    const dots = nodes.flatMap((_, i) => [
+      { i, t: (i * 0.25) % 1,       speed: 0.0042, color: ORANGE, inward: true  },
+      { i, t: (i * 0.25 + 0.5) % 1, speed: 0.0038, color: TEAL,   inward: false },
+    ]);
+
+    let pulse = 0;
+    let raf: number;
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      // Connection lines
+      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = 'rgba(46, 93, 71, 0.18)';
+      for (const node of nodes) {
+        const e = ep(node);
+        ctx.beginPath();
+        ctx.moveTo(e.x1, e.y1);
+        ctx.lineTo(e.x2, e.y2);
+        ctx.stroke();
+      }
+
+      // External nodes
+      for (const node of nodes) {
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
+        ctx.fillStyle = GREEN_BG;
+        ctx.fill();
+        ctx.strokeStyle = GREEN;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.fillStyle = GREEN;
+        ctx.font = 'bold 10px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(node.label, node.x, node.y - 7);
+        ctx.fillStyle = '#666';
+        ctx.font = '9px sans-serif';
+        ctx.fillText(node.sub, node.x, node.y + 8);
+      }
+
+      // Pulse ring
+      pulse = (pulse + 0.003) % 1;
+      ctx.beginPath();
+      ctx.arc(center.x, center.y, 65 + pulse * 20, 0, Math.PI * 2);
+      ctx.strokeStyle = GREEN;
+      ctx.lineWidth = 2;
+      ctx.globalAlpha = (1 - pulse) * 0.4;
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+
+      // Center node
+      ctx.beginPath();
+      ctx.arc(center.x, center.y, center.r, 0, Math.PI * 2);
+      ctx.fillStyle = GREEN;
+      ctx.fill();
+
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 11px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('YOUR', center.x, center.y - 8);
+      ctx.fillText('BUSINESS', center.x, center.y + 8);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+      ctx.font = '8px sans-serif';
+      ctx.fillText('receives & processes', center.x, center.y + 26);
+
+      // Animated dots
+      for (const dot of dots) {
+        dot.t = (dot.t + dot.speed) % 1;
+        const e = ep(nodes[dot.i]);
+        const pos = dot.inward
+          ? lerp(e, dot.t)
+          : lerp({ x1: e.x2, y1: e.y2, x2: e.x1, y2: e.y1 }, dot.t);
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, 5, 0, Math.PI * 2);
+        ctx.fillStyle = dot.color;
+        ctx.fill();
+      }
+
+      // Legend
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      ctx.font = '11px sans-serif';
+
+      ctx.beginPath();
+      ctx.arc(125, 407, 5, 0, Math.PI * 2);
+      ctx.fillStyle = ORANGE;
+      ctx.fill();
+      ctx.fillStyle = '#555';
+      ctx.fillText('Request for Value (RFV)', 136, 407);
+
+      ctx.beginPath();
+      ctx.arc(335, 407, 5, 0, Math.PI * 2);
+      ctx.fillStyle = TEAL;
+      ctx.fill();
+      ctx.fillStyle = '#555';
+      ctx.fillText('Return of Value (ROV)', 346, 407);
+
+      raf = requestAnimationFrame(draw);
+    }
+
+    draw();
+
+    window.addEventListener('pagehide', () => cancelAnimationFrame(raf), { once: true });
+  }
+</script>
