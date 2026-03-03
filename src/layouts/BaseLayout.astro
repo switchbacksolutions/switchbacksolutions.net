@@ -44,6 +44,78 @@ const { title = "Switchback Solutions", description = "Simple, durable technolog
     </noscript>
 
     <title>{title}</title>
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://switchbacksolutions.net/#org",
+          "name": "Switchback Solutions",
+          "url": "https://switchbacksolutions.net",
+          "logo": "https://switchbacksolutions.net/favicon.svg",
+          "slogan": "Engineering Leadership for the AI Era",
+          "description": "Fractional technical leadership and AI-first product development for early-stage founders and companies with AI initiatives.",
+          "founder": { "@id": "https://switchbacksolutions.net/#alec" },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "email": "hello@switchbacksolutions.net",
+            "url": "https://switchbacksolutions.net/contact"
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Fractional Technical Leadership",
+                  "description": "Drop-in CTO or VP of Engineering. Architecture decisions, vendor selection, technical roadmap, and hands-on development for early-stage companies without a tech team."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "AI-First Product Development",
+                  "description": "Building products from the ground up with AI embedded from day one, for founders without a tech team who need a technical partner to move fast and stay lean."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "AI Strategy & Implementation",
+                  "description": "For companies with an existing team and a specific AI goal. Clear-eyed strategy plus hands-on execution through to production."
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://switchbacksolutions.net/#alec",
+          "name": "Alec",
+          "jobTitle": "Fractional CTO & AI Engineer",
+          "description": "Senior technical architect and AI engineer. Provides fractional CTO and VP of Engineering services for early-stage founders and companies pursuing AI initiatives.",
+          "url": "https://switchbacksolutions.net",
+          "image": "https://switchbacksolutions.net/images/alec-reynolds.jpeg",
+          "worksFor": { "@id": "https://switchbacksolutions.net/#org" },
+          "knowsAbout": [
+            "Software Architecture",
+            "AI Engineering",
+            "Machine Learning",
+            "DevOps",
+            "Cloud Infrastructure",
+            "Technical Leadership",
+            "AI Strategy",
+            "Product Development"
+          ]
+        }
+      ]
+    })} />
   </head>
   <body>
     <slot />
