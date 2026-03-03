@@ -11,86 +11,152 @@ We're all trying to get our brain stems wrapped around AI. In a previous blog po
 Friendly Node is an attempt to start analyzing businesses to prepare them for success in the AI-dominated New World. It bills itself as a company "operating system"…if you're an individual of the non-technical persuasion (read: you don't geek out about software), don't let this analogy put you off. Friendly Node looks at companies both as a node within a greater network of companies in the economy, and as a network internally.
 
 <figure style="margin: 2.5rem 0; padding: 1.5rem 1rem; background: #f7faf8; border-radius: 8px; text-align: center;">
-<svg viewBox="0 0 600 440" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto;" role="img" aria-label="Animated diagram showing a business as a node in the economic network, with orange dots representing Requests for Value flowing in and green dots representing Returns of Value flowing out to customers, suppliers, partners, and regulators.">
-  <defs>
-    <marker id="fn-arr-rfv" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#C46827"/>
-    </marker>
-    <marker id="fn-arr-rov" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#2E5D47"/>
-    </marker>
-    <path id="fn-rfv-cust" d="M 297 100 L 297 145"/>
-    <path id="fn-rfv-supp" d="M 120 207 L 235 207"/>
-    <path id="fn-rfv-part" d="M 480 213 L 365 213"/>
-    <path id="fn-rfv-regs" d="M 303 320 L 303 275"/>
-    <path id="fn-rov-cust" d="M 303 145 L 303 100"/>
-    <path id="fn-rov-supp" d="M 235 213 L 120 213"/>
-    <path id="fn-rov-part" d="M 365 207 L 480 207"/>
-    <path id="fn-rov-regs" d="M 297 275 L 297 320"/>
-  </defs>
-
-  <!-- Connection lines — bidirectional, slightly offset -->
-  <line x1="297" y1="100" x2="297" y2="143" stroke="#C46827" stroke-width="1.5" stroke-opacity="0.35" marker-end="url(#fn-arr-rfv)"/>
-  <line x1="303" y1="143" x2="303" y2="100" stroke="#2E5D47" stroke-width="1.5" stroke-opacity="0.35" marker-end="url(#fn-arr-rov)"/>
-  <line x1="120" y1="207" x2="233" y2="207" stroke="#C46827" stroke-width="1.5" stroke-opacity="0.35" marker-end="url(#fn-arr-rfv)"/>
-  <line x1="233" y1="213" x2="120" y2="213" stroke="#2E5D47" stroke-width="1.5" stroke-opacity="0.35" marker-end="url(#fn-arr-rov)"/>
-  <line x1="480" y1="213" x2="367" y2="213" stroke="#C46827" stroke-width="1.5" stroke-opacity="0.35" marker-end="url(#fn-arr-rfv)"/>
-  <line x1="367" y1="207" x2="480" y2="207" stroke="#2E5D47" stroke-width="1.5" stroke-opacity="0.35" marker-end="url(#fn-arr-rov)"/>
-  <line x1="303" y1="320" x2="303" y2="277" stroke="#C46827" stroke-width="1.5" stroke-opacity="0.35" marker-end="url(#fn-arr-rfv)"/>
-  <line x1="297" y1="277" x2="297" y2="320" stroke="#2E5D47" stroke-width="1.5" stroke-opacity="0.35" marker-end="url(#fn-arr-rov)"/>
-
-  <!-- Inline labels on customer connection -->
-  <text x="312" y="124" font-size="9" fill="#C46827" font-family="sans-serif" opacity="0.85">RFV</text>
-  <text x="288" y="124" font-size="9" fill="#2E5D47" font-family="sans-serif" opacity="0.85" text-anchor="end">ROV</text>
-
-  <!-- External nodes -->
-  <circle cx="300" cy="60" r="40" fill="#EEF5F1" stroke="#2E5D47" stroke-width="2"/>
-  <text x="300" y="55" text-anchor="middle" font-size="10" font-weight="700" fill="#2E5D47" font-family="sans-serif">CUSTOMERS</text>
-  <text x="300" y="70" text-anchor="middle" font-size="9" fill="#666" font-family="sans-serif">orders, inquiries</text>
-
-  <circle cx="80" cy="210" r="40" fill="#EEF5F1" stroke="#2E5D47" stroke-width="2"/>
-  <text x="80" y="205" text-anchor="middle" font-size="10" font-weight="700" fill="#2E5D47" font-family="sans-serif">SUPPLIERS</text>
-  <text x="80" y="220" text-anchor="middle" font-size="9" fill="#666" font-family="sans-serif">materials, data</text>
-
-  <circle cx="520" cy="210" r="40" fill="#EEF5F1" stroke="#2E5D47" stroke-width="2"/>
-  <text x="520" y="205" text-anchor="middle" font-size="10" font-weight="700" fill="#2E5D47" font-family="sans-serif">PARTNERS</text>
-  <text x="520" y="220" text-anchor="middle" font-size="9" fill="#666" font-family="sans-serif">channels, intel</text>
-
-  <circle cx="300" cy="360" r="40" fill="#EEF5F1" stroke="#2E5D47" stroke-width="2"/>
-  <text x="300" y="354" text-anchor="middle" font-size="10" font-weight="700" fill="#2E5D47" font-family="sans-serif">REGULATORS</text>
-  <text x="300" y="369" text-anchor="middle" font-size="9" fill="#666" font-family="sans-serif">filings, taxes</text>
-
-  <!-- Center node pulse ring -->
-  <circle cx="300" cy="210" r="65" fill="none" stroke="#2E5D47" stroke-width="2">
-    <animate attributeName="r" values="65;83;65" dur="3s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.35;0;0.35" dur="3s" repeatCount="indefinite"/>
-  </circle>
-
-  <!-- Center business node -->
-  <circle cx="300" cy="210" r="65" fill="#2E5D47"/>
-  <text x="300" y="204" text-anchor="middle" font-size="11" font-weight="700" fill="white" letter-spacing="2" font-family="sans-serif">YOUR</text>
-  <text x="300" y="219" text-anchor="middle" font-size="11" font-weight="700" fill="white" letter-spacing="2" font-family="sans-serif">BUSINESS</text>
-  <text x="300" y="236" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.6)" font-family="sans-serif">receives &amp; processes</text>
-
-  <!-- Animated RFV dots (orange, incoming) -->
-  <circle r="5" fill="#E8884A"><animateMotion dur="2s" repeatCount="indefinite" begin="0s"><mpath href="#fn-rfv-cust"/></animateMotion></circle>
-  <circle r="5" fill="#E8884A"><animateMotion dur="2.3s" repeatCount="indefinite" begin="0.7s"><mpath href="#fn-rfv-supp"/></animateMotion></circle>
-  <circle r="5" fill="#E8884A"><animateMotion dur="2.1s" repeatCount="indefinite" begin="1.4s"><mpath href="#fn-rfv-part"/></animateMotion></circle>
-  <circle r="5" fill="#E8884A"><animateMotion dur="2.5s" repeatCount="indefinite" begin="0.4s"><mpath href="#fn-rfv-regs"/></animateMotion></circle>
-
-  <!-- Animated ROV dots (light green, outgoing) -->
-  <circle r="5" fill="#7BC5A0"><animateMotion dur="2s" repeatCount="indefinite" begin="1s"><mpath href="#fn-rov-cust"/></animateMotion></circle>
-  <circle r="5" fill="#7BC5A0"><animateMotion dur="2.3s" repeatCount="indefinite" begin="1.7s"><mpath href="#fn-rov-supp"/></animateMotion></circle>
-  <circle r="5" fill="#7BC5A0"><animateMotion dur="2.1s" repeatCount="indefinite" begin="0.4s"><mpath href="#fn-rov-part"/></animateMotion></circle>
-  <circle r="5" fill="#7BC5A0"><animateMotion dur="2.5s" repeatCount="indefinite" begin="1.4s"><mpath href="#fn-rov-regs"/></animateMotion></circle>
-
-  <!-- Legend -->
-  <circle cx="135" cy="418" r="5" fill="#E8884A"/>
-  <text x="146" y="422" font-size="11" fill="#555" font-family="sans-serif">Request for Value (RFV)</text>
-  <circle cx="335" cy="418" r="5" fill="#7BC5A0"/>
-  <text x="346" y="422" font-size="11" fill="#555" font-family="sans-serif">Return of Value (ROV)</text>
-</svg>
+<div style="max-width: 600px; margin: 0 auto;">
+  <canvas id="fn-diagram" width="600" height="420" style="width: 100%; height: auto; display: block;"
+    aria-label="Animated diagram showing a business as a node in the economic network, with orange dots representing Requests for Value flowing in and green dots representing Returns of Value flowing out to customers, suppliers, partners, and regulators."></canvas>
+</div>
 <figcaption style="margin-top: 0.75rem; font-size: 0.85rem; color: #888; font-style: italic;">Your business as a node in the economic network — receiving Requests for Value (orange) and returning value (green) to customers, suppliers, partners, and regulators.</figcaption>
+<script>
+(function () {
+  var canvas = document.getElementById('fn-diagram');
+  if (!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext('2d');
+
+  var W = 600, H = 420;
+  var GREEN = '#2E5D47', GREEN_BG = '#EEF5F1', ORANGE = '#E8884A', TEAL = '#7BC5A0';
+
+  var center = { x: 300, y: 205, r: 65 };
+  var nodes = [
+    { x: 300, y:  60, r: 38, label: 'CUSTOMERS',  sub: 'orders, inquiries' },
+    { x:  80, y: 205, r: 38, label: 'SUPPLIERS',   sub: 'materials, data'  },
+    { x: 520, y: 205, r: 38, label: 'PARTNERS',    sub: 'channels, intel'  },
+    { x: 300, y: 360, r: 38, label: 'REGULATORS',  sub: 'filings, taxes'   },
+  ];
+
+  // Compute endpoints from edge of external node to edge of center node
+  function ep(node) {
+    var dx = center.x - node.x, dy = center.y - node.y;
+    var d = Math.sqrt(dx * dx + dy * dy);
+    return {
+      x1: node.x + dx / d * node.r, y1: node.y + dy / d * node.r,
+      x2: center.x - dx / d * center.r, y2: center.y - dy / d * center.r,
+    };
+  }
+
+  function lerp(e, t) {
+    return { x: e.x1 + (e.x2 - e.x1) * t, y: e.y1 + (e.y2 - e.y1) * t };
+  }
+
+  // Two dots per connection: one inward (RFV, orange), one outward (ROV, teal)
+  var dots = [];
+  nodes.forEach(function (n, i) {
+    dots.push({ i: i, t: (i * 0.25) % 1,       speed: 0.0042, color: ORANGE, inward: true  });
+    dots.push({ i: i, t: (i * 0.25 + 0.5) % 1, speed: 0.0038, color: TEAL,   inward: false });
+  });
+
+  var pulse = 0, raf;
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Connection lines
+    ctx.lineWidth = 1.5;
+    ctx.strokeStyle = 'rgba(46, 93, 71, 0.18)';
+    nodes.forEach(function (node) {
+      var e = ep(node);
+      ctx.beginPath();
+      ctx.moveTo(e.x1, e.y1);
+      ctx.lineTo(e.x2, e.y2);
+      ctx.stroke();
+    });
+
+    // External nodes
+    nodes.forEach(function (node) {
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
+      ctx.fillStyle = GREEN_BG;
+      ctx.fill();
+      ctx.strokeStyle = GREEN;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      ctx.fillStyle = GREEN;
+      ctx.font = 'bold 10px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(node.label, node.x, node.y - 7);
+      ctx.fillStyle = '#666';
+      ctx.font = '9px sans-serif';
+      ctx.fillText(node.sub, node.x, node.y + 8);
+    });
+
+    // Pulse ring behind center node
+    pulse = (pulse + 0.003) % 1;
+    ctx.beginPath();
+    ctx.arc(center.x, center.y, 65 + pulse * 20, 0, Math.PI * 2);
+    ctx.strokeStyle = GREEN;
+    ctx.lineWidth = 2;
+    ctx.globalAlpha = (1 - pulse) * 0.4;
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+
+    // Center node
+    ctx.beginPath();
+    ctx.arc(center.x, center.y, center.r, 0, Math.PI * 2);
+    ctx.fillStyle = GREEN;
+    ctx.fill();
+
+    ctx.fillStyle = 'white';
+    ctx.font = 'bold 11px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('YOUR', center.x, center.y - 8);
+    ctx.fillText('BUSINESS', center.x, center.y + 8);
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+    ctx.font = '8px sans-serif';
+    ctx.fillText('receives & processes', center.x, center.y + 26);
+
+    // Animated dots
+    dots.forEach(function (dot) {
+      dot.t = (dot.t + dot.speed) % 1;
+      var e = ep(nodes[dot.i]);
+      var pos = dot.inward
+        ? lerp(e, dot.t)
+        : lerp({ x1: e.x2, y1: e.y2, x2: e.x1, y2: e.y1 }, dot.t);
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, 5, 0, Math.PI * 2);
+      ctx.fillStyle = dot.color;
+      ctx.fill();
+    });
+
+    // Legend
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    ctx.font = '11px sans-serif';
+
+    ctx.beginPath();
+    ctx.arc(125, 407, 5, 0, Math.PI * 2);
+    ctx.fillStyle = ORANGE;
+    ctx.fill();
+    ctx.fillStyle = '#555';
+    ctx.fillText('Request for Value (RFV)', 136, 407);
+
+    ctx.beginPath();
+    ctx.arc(335, 407, 5, 0, Math.PI * 2);
+    ctx.fillStyle = TEAL;
+    ctx.fill();
+    ctx.fillStyle = '#555';
+    ctx.fillText('Return of Value (ROV)', 346, 407);
+
+    raf = requestAnimationFrame(draw);
+  }
+
+  draw();
+
+  // Cancel animation loop when navigating away
+  window.addEventListener('pagehide', function () { cancelAnimationFrame(raf); }, { once: true });
+})();
+</script>
 </figure>
 
 ## Information is Processed into Value
