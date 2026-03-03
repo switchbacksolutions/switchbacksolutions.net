@@ -1,7 +1,7 @@
 ---
 title: When to Build vs. Buy (and When to Borrow)
 description: The build vs. buy decision is one of the most consequential calls a small team can make. Here's a framework that's served me well.
-publishedDate: 2026-02-10
+publishedDate: 2025-11-10
 author: Alec
 tags: [Strategy, Technical Decision-Making]
 ---

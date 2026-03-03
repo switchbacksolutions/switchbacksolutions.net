@@ -1,7 +1,7 @@
 ---
 title: AI Is Reversing My Decades-Old Website Advice. And It's A Good Thing.
 description: Custom web development used to cost as much as a car. AI has changed the math — and what I recommend to clients of every size.
-publishedDate: 2026-03-02
+publishedDate: 2026-01-27
 author: Alec
 tags: [AI, Web Development, Strategy]
 ---
@@ -50,7 +50,7 @@ With these tools, I can confidently recommend that a small neighborhood pilates 
 - Be more performant and cheaper to host (a free Netlify account will likely outperform any SaaS platform)
 - Be easier to extend for marketing automation, e-commerce, and business operations
 
-*If you're wondering what this looks like in practice for your business, [I'm happy to talk through it](mailto:hello@switchbacksolutions.net).*
+*If you're wondering what this looks like in practice for your business, [I'm happy to talk through it](/contact).*
 
 ## Making the Voyage from Ye Olde World
 
@@ -64,4 +64,4 @@ Over the coming months and years, the colonies we're building in this AI-first w
 
 In the meantime, whether you're running a Fortune 500 or a neighborhood pilates studio, my advice is the same: revisit your assumptions about what a website is and how it should be built in 2026. We've hit the first of many inflection points, and whatever you build today may look different a year from now — but the cost of building, maintaining, and extending your technology will be lower than it's ever been.
 
-*Curious how Switchback approaches this for clients? [Explore our work](https://switchbacksolutions.net) or [get in touch](mailto:hello@switchbacksolutions.net) — I'd love to compare notes.*
+*Curious how Switchback approaches this for clients? [Explore our work](https://switchbacksolutions.net) or [get in touch](/contact) — I'd love to compare notes.*
