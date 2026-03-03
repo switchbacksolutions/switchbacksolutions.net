@@ -1,0 +1,241 @@
+---
+// No props — self-contained diagram
+---
+
+<figure class="bnd-figure">
+  <div class="bnd-wrapper">
+    <canvas
+      id="bnd-diagram"
+      width="600"
+      height="355"
+      aria-label="Animated diagram of a business's internal node network: website, sales, fulfillment, customer success, and product feedback, with information flowing between them in sequence and a feedback loop returning to the website node."
+    ></canvas>
+  </div>
+  <figcaption>
+    An e-commerce business as an internal network of nodes. Information flows through each
+    node in sequence — and product feedback loops back to inform the next cycle.
+  </figcaption>
+</figure>
+
+<style>
+  .bnd-figure {
+    margin: 2.5rem 0;
+    padding: 1.5rem 1rem;
+    background: #f7faf8;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .bnd-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .bnd-wrapper canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .bnd-figure figcaption {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: #888;
+    font-style: italic;
+  }
+</style>
+
+<script>
+  const canvas = document.getElementById('bnd-diagram') as HTMLCanvasElement | null;
+  if (canvas && canvas.getContext) {
+    const ctx = canvas.getContext('2d')!;
+    const W = 600, H = 355;
+    const GREEN = '#2E5D47';
+    const ORANGE = '#E8884A';
+    const FEEDBACK_COLOR = '#9BC5B0';
+
+    const nodes = [
+      { x: 120, y: 110, r: 40, lines: ['WEBSITE'] },
+      { x: 300, y: 110, r: 40, lines: ['SALES'] },
+      { x: 480, y: 110, r: 40, lines: ['FULFILLMENT'] },
+      { x: 480, y: 250, r: 40, lines: ['CUSTOMER', 'SUCCESS'] },
+      { x: 300, y: 250, r: 40, lines: ['PRODUCT', 'FEEDBACK'] },
+    ];
+
+    // Primary flow: 0→1→2→3→4
+    const connections: [number, number][] = [[0,1],[1,2],[2,3],[3,4]];
+
+    // Compute edge-to-edge endpoints between two nodes
+    function ep(ai: number, bi: number) {
+      const a = nodes[ai], b = nodes[bi];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const d = Math.sqrt(dx * dx + dy * dy);
+      return {
+        x1: a.x + dx / d * a.r, y1: a.y + dy / d * a.r,
+        x2: b.x - dx / d * b.r, y2: b.y - dy / d * b.r,
+        ux: dx / d, uy: dy / d,
+      };
+    }
+
+    // Precompute primary connection endpoints (static)
+    const connEps = connections.map(([ai, bi]) => ep(ai, bi));
+
+    // Feedback arc: PRODUCT FEEDBACK (4) → WEBSITE (0)
+    const fbEp = ep(4, 0);
+    const fbCp = { x: 40, y: 190 }; // bezier control point, curves left
+
+    function lerp(e: ReturnType<typeof ep>, t: number) {
+      return { x: e.x1 + (e.x2 - e.x1) * t, y: e.y1 + (e.y2 - e.y1) * t };
+    }
+
+    function bezierPt(x0: number, y0: number, cpx: number, cpy: number, x1: number, y1: number, t: number) {
+      const mt = 1 - t;
+      return { x: mt*mt*x0 + 2*mt*t*cpx + t*t*x1, y: mt*mt*y0 + 2*mt*t*cpy + t*t*y1 };
+    }
+
+    // One orange dot per primary connection (staggered), one feedback dot
+    const dots = [
+      ...connections.map((_, i) => ({ kind: 'primary' as const, ci: i, t: i * 0.25, speed: 0.004 })),
+      { kind: 'feedback' as const, ci: -1, t: 0.5, speed: 0.003 },
+    ];
+
+    function drawArrowhead(x: number, y: number, ux: number, uy: number, size = 6, alpha = 0.45) {
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x - ux * size + uy * size * 0.4, y - uy * size - ux * size * 0.4);
+      ctx.lineTo(x - ux * size - uy * size * 0.4, y - uy * size + ux * size * 0.4);
+      ctx.closePath();
+      ctx.fillStyle = GREEN;
+      ctx.fill();
+      ctx.restore();
+    }
+
+    let raf: number;
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      // Business boundary (rounded dashed rect)
+      const [bx, by, bw, bh, br] = [38, 30, 524, 284, 14];
+      ctx.beginPath();
+      ctx.moveTo(bx + br, by);
+      ctx.lineTo(bx + bw - br, by);  ctx.arcTo(bx + bw, by,      bx + bw, by + br,      br);
+      ctx.lineTo(bx + bw, by + bh - br); ctx.arcTo(bx + bw, by + bh, bx + bw - br, by + bh, br);
+      ctx.lineTo(bx + br, by + bh); ctx.arcTo(bx, by + bh, bx, by + bh - br, br);
+      ctx.lineTo(bx, by + br); ctx.arcTo(bx, by, bx + br, by, br);
+      ctx.closePath();
+      ctx.fillStyle = '#F2F8F5';
+      ctx.fill();
+      ctx.setLineDash([6, 4]);
+      ctx.strokeStyle = 'rgba(46, 93, 71, 0.25)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Boundary label
+      ctx.fillStyle = 'rgba(46, 93, 71, 0.4)';
+      ctx.font = 'bold 9px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText('YOUR BUSINESS', bx + bw / 2, by + 7);
+
+      // Primary connection lines
+      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = 'rgba(46, 93, 71, 0.2)';
+      for (const e of connEps) {
+        ctx.beginPath();
+        ctx.moveTo(e.x1, e.y1);
+        ctx.lineTo(e.x2, e.y2);
+        ctx.stroke();
+        drawArrowhead(e.x2, e.y2, e.ux, e.uy);
+      }
+
+      // Feedback arc (dashed)
+      ctx.beginPath();
+      ctx.moveTo(fbEp.x1, fbEp.y1);
+      ctx.quadraticCurveTo(fbCp.x, fbCp.y, fbEp.x2, fbEp.y2);
+      ctx.setLineDash([5, 4]);
+      ctx.strokeStyle = 'rgba(46, 93, 71, 0.18)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Arrowhead at end of feedback arc — tangent direction at t=1 is 2*(P1 - CP)
+      const ftux = fbEp.x2 - fbCp.x, ftuy = fbEp.y2 - fbCp.y;
+      const ftd = Math.sqrt(ftux * ftux + ftuy * ftuy);
+      drawArrowhead(fbEp.x2, fbEp.y2, ftux / ftd, ftuy / ftd, 6, 0.35);
+
+      // Feedback label
+      ctx.fillStyle = 'rgba(46, 93, 71, 0.4)';
+      ctx.font = 'italic 8px sans-serif';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('feedback', 48, 192);
+
+      // Nodes (drawn on top so arcs tuck cleanly behind them)
+      for (const node of nodes) {
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
+        ctx.fillStyle = GREEN;
+        ctx.fill();
+
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 9px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        if (node.lines.length === 1) {
+          ctx.fillText(node.lines[0], node.x, node.y);
+        } else {
+          ctx.fillText(node.lines[0], node.x, node.y - 7);
+          ctx.fillText(node.lines[1], node.x, node.y + 7);
+        }
+      }
+
+      // Animated dots
+      for (const dot of dots) {
+        dot.t = (dot.t + dot.speed) % 1;
+
+        if (dot.kind === 'primary') {
+          const pos = lerp(connEps[dot.ci], dot.t);
+          ctx.beginPath();
+          ctx.arc(pos.x, pos.y, 5, 0, Math.PI * 2);
+          ctx.fillStyle = ORANGE;
+          ctx.fill();
+        } else {
+          const pos = bezierPt(fbEp.x1, fbEp.y1, fbCp.x, fbCp.y, fbEp.x2, fbEp.y2, dot.t);
+          ctx.beginPath();
+          ctx.arc(pos.x, pos.y, 4, 0, Math.PI * 2);
+          ctx.fillStyle = FEEDBACK_COLOR;
+          ctx.fill();
+        }
+      }
+
+      // Legend
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      ctx.font = '11px sans-serif';
+
+      ctx.beginPath();
+      ctx.arc(135, 328, 5, 0, Math.PI * 2);
+      ctx.fillStyle = ORANGE;
+      ctx.fill();
+      ctx.fillStyle = '#555';
+      ctx.fillText('information flow', 146, 328);
+
+      ctx.beginPath();
+      ctx.arc(325, 328, 4, 0, Math.PI * 2);
+      ctx.fillStyle = FEEDBACK_COLOR;
+      ctx.fill();
+      ctx.fillStyle = '#555';
+      ctx.fillText('feedback loop', 335, 328);
+
+      raf = requestAnimationFrame(draw);
+    }
+
+    draw();
+
+    window.addEventListener('pagehide', () => cancelAnimationFrame(raf), { once: true });
+  }
+</script>
