@@ -25,7 +25,9 @@ test.describe('Blog listing page', () => {
     await expect(firstCard.locator('.post-description')).toBeVisible();
   });
 
-  test('nav includes Blog link', async ({ page }) => {
+  test('nav includes Blog link', async ({ page, isMobile }) => {
+    // Nav is hidden on mobile via CSS; only check desktop
+    test.skip(isMobile, 'Nav links hidden on mobile');
     await expect(page.locator('header').getByRole('link', { name: /blog/i })).toBeVisible();
   });
 });

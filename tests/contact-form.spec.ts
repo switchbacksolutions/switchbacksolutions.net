@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Contact form', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/#contact');
+    await page.goto('/contact');
   });
 
   test('renders all form fields', async ({ page }) => {
@@ -41,7 +41,7 @@ test.describe('Contact form', () => {
 
   test('shows success state after valid submission', async ({ page }) => {
     // Intercept the Netlify form POST and return a 200
-    await page.route('/', async (route) => {
+    await page.route('/contact', async (route) => {
       if (route.request().method() === 'POST') {
         await route.fulfill({ status: 200, body: 'OK' });
       } else {
@@ -60,7 +60,7 @@ test.describe('Contact form', () => {
   });
 
   test('shows error message when submission fails', async ({ page }) => {
-    await page.route('/', async (route) => {
+    await page.route('/contact', async (route) => {
       if (route.request().method() === 'POST') {
         await route.fulfill({ status: 500, body: 'Error' });
       } else {
