@@ -22,13 +22,13 @@ test.describe('Homepage', () => {
 
   test('about section is present', async ({ page }) => {
     await expect(page.locator('#about')).toBeVisible();
-    await expect(page.locator('#about h2')).toContainText(/Built for Teams/i);
+    await expect(page.locator('#about h2')).toContainText(/Your Technical Leader/i);
   });
 
-  test('services section has four service cards', async ({ page }) => {
+  test('services section has three service cards', async ({ page }) => {
     const services = page.locator('#services');
     await expect(services).toBeVisible();
-    await expect(services.locator('.service-card')).toHaveCount(4);
+    await expect(services.locator('.service-card')).toHaveCount(3);
   });
 
   test('who-we-work-with section is present', async ({ page }) => {
@@ -36,14 +36,9 @@ test.describe('Homepage', () => {
     await expect(page.locator('#work h2')).toContainText(/Who I Work With/i);
   });
 
-  test('contact section is present', async ({ page }) => {
-    await expect(page.locator('#contact')).toBeVisible();
-    await expect(page.locator('#contact h2')).toContainText(/Let's Talk/i);
-  });
-
-  test('hero CTA scrolls to contact section', async ({ page }) => {
-    await page.locator('.hero').getByRole('link', { name: /work with me/i }).click();
-    await expect(page.locator('#contact')).toBeInViewport();
+  test('hero CTA links to contact page', async ({ page }) => {
+    const cta = page.locator('.hero').getByRole('link', { name: /work with me/i });
+    await expect(cta).toHaveAttribute('href', /\/contact/);
   });
 
   test('footer shows current year copyright', async ({ page }) => {
