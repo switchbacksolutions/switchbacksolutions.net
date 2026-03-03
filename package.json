@@ -12,6 +12,7 @@
     "test:ui": "npx playwright test --ui"
   },
   "dependencies": {
+    "@astrojs/mdx": "^3.1.9",
     "astro": "^4.0.0",
     "maplibre-contour": "^0.0.5",
     "maplibre-gl": "^3.6.2"

@@ -1,4 +1,15 @@
 declare module 'astro:content' {
+	interface Render {
+		'.mdx': Promise<{
+			Content: import('astro').MarkdownInstance<{}>['Content'];
+			headings: import('astro').MarkdownHeading[];
+			remarkPluginFrontmatter: Record<string, any>;
+			components: import('astro').MDXInstance<{}>['components'];
+		}>;
+	}
+}
+
+declare module 'astro:content' {
 	interface RenderResult {
 		Content: import('astro/runtime/server/index.js').AstroComponentFactory;
 		headings: import('astro').MarkdownHeading[];
@@ -141,6 +152,27 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
+"ai-reversing-website-advice.md": {
+	id: "ai-reversing-website-advice.md";
+  slug: "ai-reversing-website-advice";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"friendly-node.mdx": {
+	id: "friendly-node.mdx";
+  slug: "friendly-node";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"health-tech-cofounder.md": {
+	id: "health-tech-cofounder.md";
+  slug: "health-tech-cofounder";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "pragmatic-devops-for-small-teams.md": {
 	id: "pragmatic-devops-for-small-teams.md";
   slug: "pragmatic-devops-for-small-teams";
