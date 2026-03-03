@@ -1,0 +1,449 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const currentYear = new Date().getFullYear();
+---
+
+<BaseLayout>
+  <Header />
+
+  <main class="about-page">
+
+    <!-- Intro -->
+    <section class="intro-section">
+      <div class="container">
+        <div class="intro-grid">
+          <div class="intro-text">
+            <h1 class="page-title">About Alec</h1>
+            <p class="lead">
+              I'm a technical architect and AI engineer who has spent the last fifteen-plus years building software, scaling teams, and helping companies figure out what to build — and how to build it well.
+            </p>
+          </div>
+          <div class="intro-photo">
+            <img src="/images/alec-reynolds.jpeg" alt="Alec Reynolds" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bio -->
+    <section class="bio-section">
+      <div class="container">
+        <div class="bio-content">
+          <p>
+            My career started in the San Francisco startup scene, where I learned what it looks like when technology and product thinking are firing on all cylinders — and what it costs when they're not. That experience shaped everything I've built since: two revenue-funded consultancies scaled to seven-figure annual revenue, a decade of leading multidisciplinary teams through complex web application challenges in healthcare, finance, education, and beyond.
+          </p>
+          <p>
+            More recently, I've been building <a href="https://lando.dev" target="_blank" rel="noopener">Lando</a> — a developer experience platform built on Docker and Node.js that makes local development dramatically simpler. With over 13,000 active monthly users, it's become a standard part of the development workflow for teams around the world. Building Lando deepened my understanding of developer needs at scale and reinforced something I already believed: the right tooling multiplies what a lean team can accomplish.
+          </p>
+          <p>
+            Today, my focus is AI-first software development. The tools available to engineering teams have fundamentally shifted, but the strategic question of <em>what</em> to build with them — and where AI actually moves the needle — still requires experienced judgment. I work with early-stage founders and forward-thinking companies as their drop-in technical leader: shaping product decisions, architecting systems, and building alongside teams that are ready to move.
+          </p>
+          <p>
+            My goal has always been to distribute the lessons of the SF startup world more broadly. The way those teams think about product, speed, and technical leverage shouldn't be locked inside a few zip codes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlights -->
+    <section class="highlights-section">
+      <div class="container">
+        <div class="highlights-grid">
+          <div class="highlight">
+            <div class="highlight-number">2</div>
+            <div class="highlight-label">Revenue-funded consultancies scaled to 7-figure annual revenue</div>
+          </div>
+          <div class="highlight">
+            <div class="highlight-number">13K+</div>
+            <div class="highlight-label">Active monthly users of Lando, an open source developer tool I created</div>
+          </div>
+          <div class="highlight">
+            <div class="highlight-number">15+</div>
+            <div class="highlight-label">Years building software across startups, agencies, and enterprise</div>
+          </div>
+          <div class="highlight">
+            <div class="highlight-number">6+</div>
+            <div class="highlight-label">Industries including healthcare, finance, insurance, education, and nonprofits</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical background -->
+    <section class="technical-section">
+      <div class="container">
+        <h2 class="section-title">Technical Background</h2>
+        <div class="technical-content">
+          <p>
+            I'm fluent across the full stack — Node.js, Python, PHP (Laravel, Symfony, Drupal), and the infrastructure that runs it all (Docker, AWS). I've designed and built HIPAA-compliant systems for healthcare platforms, architected pipelines for AI/ML workloads, and set up DevOps foundations that let small teams punch well above their weight.
+          </p>
+          <p>
+            I'm deliberately tech-agnostic in my practice. The right stack is the one that fits the team, the constraints, and the problem — not the one that's trending. My portfolio speaks to that range better than any list of logos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Personal -->
+    <section class="personal-section">
+      <div class="container">
+        <div class="personal-content">
+          <p>
+            My natural habitat is the Sierra Nevada foothills, where I spend my time trail running, camping with my family, and tending a garden that's always more ambitious than the season allows. The same instinct that draws me to the mountains — knowing when to push, when to rest, and how to read the terrain — shows up in how I work with clients.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to Build Something?</h2>
+        <p>If you need a technical partner who can think strategically and build alongside you, let's talk.</p>
+        <a href="/contact" class="cta-button-large">Work with Me</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <div class="logo-icon-small">S</div>
+          <div class="footer-logo-text">
+            <div>SWITCHBACK</div>
+            <div>SOLUTIONS</div>
+          </div>
+        </div>
+        <p class="footer-tagline">Engineering Leadership for the AI Era</p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; {currentYear} Switchback Solutions. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>
+
+<style>
+  .about-page {
+    padding-top: 80px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Intro */
+  .intro-section {
+    padding: 5rem 0 3rem;
+    background-color: var(--color-light);
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .intro-photo img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .page-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .lead {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    line-height: 1.7;
+    color: var(--color-dark);
+    max-width: 760px;
+    font-weight: 500;
+  }
+
+  /* Bio */
+  .bio-section {
+    padding: 4rem 0;
+  }
+
+  .bio-content {
+    max-width: 760px;
+    font-size: 1.125rem;
+    line-height: 1.85;
+    color: var(--color-dark);
+  }
+
+  .bio-content p {
+    margin-bottom: 1.75rem;
+  }
+
+  .bio-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .bio-content a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .bio-content a:hover {
+    opacity: 0.75;
+  }
+
+  .bio-content em {
+    font-style: italic;
+  }
+
+  /* Highlights */
+  .highlights-section {
+    padding: 4rem 0;
+    background-color: var(--color-primary);
+  }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+  }
+
+  .highlight {
+    color: white;
+  }
+
+  .highlight-number {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .highlight-label {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.85;
+  }
+
+  /* Technical */
+  .technical-section {
+    padding: 4rem 0;
+    background-color: var(--color-secondary);
+  }
+
+  .section-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .technical-content {
+    max-width: 760px;
+    font-size: 1.125rem;
+    line-height: 1.85;
+    color: var(--color-dark);
+  }
+
+  .technical-content p {
+    margin-bottom: 1.5rem;
+  }
+
+  .technical-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Personal */
+  .personal-section {
+    padding: 4rem 0;
+    border-left: 4px solid var(--color-accent);
+    margin: 0;
+  }
+
+  .personal-section .container {
+    padding-left: 3rem;
+  }
+
+  .personal-content {
+    max-width: 680px;
+    font-size: 1.125rem;
+    line-height: 1.85;
+    color: var(--color-dark);
+    font-style: italic;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 5rem 0;
+    text-align: center;
+    background-color: var(--color-light);
+  }
+
+  .cta-section h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .cta-section p {
+    font-size: 1.125rem;
+    color: var(--color-dark);
+    margin-bottom: 2rem;
+    opacity: 0.85;
+  }
+
+  .cta-button-large {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: white;
+    padding: 1.25rem 2.5rem;
+    border-radius: 6px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 500;
+    font-size: 1.125rem;
+    transition: background-color 0.2s, transform 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .cta-button-large:hover {
+    background-color: #d4944a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Footer */
+  .footer {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 3rem 0 2rem;
+  }
+
+  .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .logo-icon-small {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: white;
+    border: 2px solid white;
+    border-radius: 4px;
+  }
+
+  .footer-logo-text {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+  }
+
+  .footer-tagline {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.875rem;
+    opacity: 0.7;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .intro-section {
+      padding: 4rem 0 2.5rem;
+    }
+
+    .intro-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .intro-photo {
+      order: -1;
+    }
+
+    .intro-photo img {
+      width: 160px;
+      height: 160px;
+    }
+
+    .bio-section,
+    .technical-section,
+    .cta-section {
+      padding: 3rem 0;
+    }
+
+    .highlights-section {
+      padding: 3rem 0;
+    }
+
+    .highlights-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .personal-section {
+      padding: 3rem 0;
+    }
+
+    .personal-section .container {
+      padding-left: 2rem;
+    }
+
+    .container {
+      padding: 0 1.5rem;
+    }
+
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .highlights-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
