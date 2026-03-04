@@ -6,14 +6,13 @@
   <div class="bnd-wrapper">
     <canvas
       id="bnd-diagram"
-      width="600"
-      height="355"
-      aria-label="Animated diagram of a business's internal node network: website, sales, fulfillment, customer success, and product feedback, with information flowing between them in sequence and a feedback loop returning to the website node."
+      width="640"
+      height="420"
+      aria-label="Animated diagram showing a customer node outside the business boundary. The website acts as a router inside the business, sending signals to Sales and Fulfillment. Sales connects to Customer Success and Product Dev; Fulfillment connects to Customer Success and Product Dev. Orange dots show requests for value flowing in from the customer; green dots show return of value flowing back out to the customer."
     ></canvas>
   </div>
   <figcaption>
-    An e-commerce business as an internal network of nodes. Information flows through each
-    node in sequence — and product feedback loops back to inform the next cycle.
+    The customer sits outside your business. The website routes their requests inward to Sales and Fulfillment, which connect further to Customer Success and Product Dev. Orange dots = request for value flowing in; green dots = return of value flowing back to the customer. The muted Sales node illustrates an unfriendly node — explored in the CRM section below.
   </figcaption>
 </figure>
 
@@ -27,7 +26,7 @@
   }
 
   .bnd-wrapper {
-    max-width: 600px;
+    max-width: 640px;
     margin: 0 auto;
   }
 
@@ -49,65 +48,101 @@
   const canvas = document.getElementById('bnd-diagram') as HTMLCanvasElement | null;
   if (canvas && canvas.getContext) {
     const ctx = canvas.getContext('2d')!;
-    const W = 600, H = 355;
-    const GREEN = '#2E5D47';
-    const ORANGE = '#E8884A';
-    const FEEDBACK_COLOR = '#9BC5B0';
+    const W = 640, H = 420;
+    const NODE_GREEN  = '#2E5D47';
+    const GREY_NODE   = '#8A9D97';
+    const CUST_COLOR  = '#1B5E7B';  // external customer node (blue-teal)
+    const ORANGE      = '#E8884A';  // request for value
+    const GREEN_DOT   = '#4CAF7D';  // return of value
+    const CROSS_DOT   = '#9BC5B0';  // internal cross-connections
 
-    const nodes = [
-      { x: 120, y: 110, r: 40, lines: ['WEBSITE'] },
-      { x: 300, y: 110, r: 40, lines: ['SALES'] },
-      { x: 480, y: 110, r: 40, lines: ['FULFILLMENT'] },
-      { x: 480, y: 250, r: 40, lines: ['CUSTOMER', 'SUCCESS'] },
-      { x: 300, y: 250, r: 40, lines: ['PRODUCT', 'FEEDBACK'] },
+    interface Node { x: number; y: number; r: number; lines: string[]; healthy: boolean; external?: boolean; }
+    const nodes: Node[] = [
+      { x: 58,  y: 205, r: 36, lines: ['CUSTOMER'],            healthy: true,  external: true  }, // 0
+      { x: 218, y: 205, r: 36, lines: ['WEBSITE'],             healthy: true                   }, // 1 router
+      { x: 378, y: 110, r: 36, lines: ['SALES'],               healthy: false                  }, // 2 unhealthy
+      { x: 378, y: 300, r: 36, lines: ['FULFILLMENT'],         healthy: true                   }, // 3
+      { x: 528, y: 110, r: 36, lines: ['CUSTOMER', 'SUCCESS'], healthy: true                   }, // 4
+      { x: 528, y: 300, r: 36, lines: ['PRODUCT', 'DEV'],      healthy: true                   }, // 5
     ];
 
-    // Primary flow: 0→1→2→3→4
-    const connections: [number, number][] = [[0,1],[1,2],[2,3],[3,4]];
+    // Primary edges drawn with arrows
+    const primEdges: [number, number][] = [
+      [0, 1],  // Customer ↔ Website (bidirectional arrows)
+      [1, 2],  // Website → Sales
+      [1, 3],  // Website → Fulfillment
+    ];
 
-    // Compute edge-to-edge endpoints between two nodes
+    // Cross edges (internal, drawn lighter, bidirectional)
+    const crossEdges: [number, number][] = [
+      [2, 4],  // Sales ↔ Customer Success
+      [2, 5],  // Sales ↔ Product Dev
+      [3, 4],  // Fulfillment ↔ Customer Success
+      [3, 5],  // Fulfillment ↔ Product Dev
+      [4, 5],  // Customer Success ↔ Product Dev
+    ];
+
     function ep(ai: number, bi: number) {
       const a = nodes[ai], b = nodes[bi];
       const dx = b.x - a.x, dy = b.y - a.y;
-      const d = Math.sqrt(dx * dx + dy * dy);
+      const d  = Math.sqrt(dx*dx + dy*dy);
       return {
-        x1: a.x + dx / d * a.r, y1: a.y + dy / d * a.r,
-        x2: b.x - dx / d * b.r, y2: b.y - dy / d * b.r,
-        ux: dx / d, uy: dy / d,
+        x1: a.x + dx/d * a.r, y1: a.y + dy/d * a.r,
+        x2: b.x - dx/d * b.r, y2: b.y - dy/d * b.r,
+        ux: dx/d, uy: dy/d,
       };
     }
 
-    // Precompute primary connection endpoints (static)
-    const connEps = connections.map(([ai, bi]) => ep(ai, bi));
+    const primEps  = primEdges.map(([a,b]) => ep(a,b));
+    const crossEps = crossEdges.map(([a,b]) => ep(a,b));
 
-    // Feedback arc: PRODUCT FEEDBACK (4) → WEBSITE (0)
-    const fbEp = ep(4, 0);
-    const fbCp = { x: 40, y: 190 }; // bezier control point, curves left
-
-    function lerp(e: ReturnType<typeof ep>, t: number) {
-      return { x: e.x1 + (e.x2 - e.x1) * t, y: e.y1 + (e.y2 - e.y1) * t };
+    function edgePos(e: ReturnType<typeof ep>, t: number, rev: boolean) {
+      if (!rev) return { x: e.x1 + (e.x2-e.x1)*t, y: e.y1 + (e.y2-e.y1)*t };
+      return         { x: e.x2 + (e.x1-e.x2)*t, y: e.y2 + (e.y1-e.y2)*t };
     }
 
-    function bezierPt(x0: number, y0: number, cpx: number, cpy: number, x1: number, y1: number, t: number) {
-      const mt = 1 - t;
-      return { x: mt*mt*x0 + 2*mt*t*cpx + t*t*x1, y: mt*mt*y0 + 2*mt*t*cpy + t*t*y1 };
-    }
-
-    // One orange dot per primary connection (staggered), one feedback dot
-    const dots = [
-      ...connections.map((_, i) => ({ kind: 'primary' as const, ci: i, t: i * 0.25, speed: 0.004 })),
-      { kind: 'feedback' as const, ci: -1, t: 0.5, speed: 0.003 },
+    interface Dot { kind: 'prim'|'cross'; ci: number; t: number; speed: number; rev: boolean; color: string; r: number; }
+    const dots: Dot[] = [
+      // Orange: Customer → Website (request flowing in)
+      { kind: 'prim', ci: 0, t: 0.00, speed: 0.0042, rev: false, color: ORANGE,    r: 5 },
+      { kind: 'prim', ci: 0, t: 0.52, speed: 0.0042, rev: false, color: ORANGE,    r: 5 },
+      // Green: Website → Customer (return of value — prominent, 3 dots)
+      { kind: 'prim', ci: 0, t: 0.25, speed: 0.0042, rev: true,  color: GREEN_DOT, r: 6 },
+      { kind: 'prim', ci: 0, t: 0.58, speed: 0.0042, rev: true,  color: GREEN_DOT, r: 6 },
+      { kind: 'prim', ci: 0, t: 0.80, speed: 0.0042, rev: true,  color: GREEN_DOT, r: 6 },
+      // Orange: Website → Sales
+      { kind: 'prim', ci: 1, t: 0.20, speed: 0.004,  rev: false, color: ORANGE,    r: 5 },
+      { kind: 'prim', ci: 1, t: 0.72, speed: 0.004,  rev: false, color: ORANGE,    r: 5 },
+      // Green: Sales → Website
+      { kind: 'prim', ci: 1, t: 0.45, speed: 0.004,  rev: true,  color: GREEN_DOT, r: 6 },
+      // Orange: Website → Fulfillment
+      { kind: 'prim', ci: 2, t: 0.35, speed: 0.004,  rev: false, color: ORANGE,    r: 5 },
+      { kind: 'prim', ci: 2, t: 0.82, speed: 0.004,  rev: false, color: ORANGE,    r: 5 },
+      // Green: Fulfillment → Website (2 dots — fulfillment is the healthy return path)
+      { kind: 'prim', ci: 2, t: 0.15, speed: 0.004,  rev: true,  color: GREEN_DOT, r: 6 },
+      { kind: 'prim', ci: 2, t: 0.62, speed: 0.004,  rev: true,  color: GREEN_DOT, r: 6 },
+      // Cross dots (internal information flow)
+      { kind: 'cross', ci: 0, t: 0.10, speed: 0.003, rev: false, color: CROSS_DOT, r: 4 },
+      { kind: 'cross', ci: 0, t: 0.62, speed: 0.003, rev: true,  color: CROSS_DOT, r: 4 },
+      { kind: 'cross', ci: 1, t: 0.28, speed: 0.003, rev: false, color: CROSS_DOT, r: 4 },
+      { kind: 'cross', ci: 1, t: 0.75, speed: 0.003, rev: true,  color: CROSS_DOT, r: 4 },
+      { kind: 'cross', ci: 2, t: 0.42, speed: 0.003, rev: false, color: CROSS_DOT, r: 4 },
+      { kind: 'cross', ci: 2, t: 0.88, speed: 0.003, rev: true,  color: CROSS_DOT, r: 4 },
+      { kind: 'cross', ci: 3, t: 0.18, speed: 0.003, rev: false, color: CROSS_DOT, r: 4 },
+      { kind: 'cross', ci: 3, t: 0.65, speed: 0.003, rev: true,  color: CROSS_DOT, r: 4 },
+      { kind: 'cross', ci: 4, t: 0.33, speed: 0.003, rev: false, color: CROSS_DOT, r: 4 },
+      { kind: 'cross', ci: 4, t: 0.80, speed: 0.003, rev: true,  color: CROSS_DOT, r: 4 },
     ];
 
-    function drawArrowhead(x: number, y: number, ux: number, uy: number, size = 6, alpha = 0.45) {
+    function drawArrow(x: number, y: number, ux: number, uy: number, size = 6, alpha = 0.4) {
       ctx.save();
       ctx.globalAlpha = alpha;
       ctx.beginPath();
       ctx.moveTo(x, y);
-      ctx.lineTo(x - ux * size + uy * size * 0.4, y - uy * size - ux * size * 0.4);
-      ctx.lineTo(x - ux * size - uy * size * 0.4, y - uy * size + ux * size * 0.4);
+      ctx.lineTo(x - ux*size + uy*size*0.4, y - uy*size - ux*size*0.4);
+      ctx.lineTo(x - ux*size - uy*size*0.4, y - uy*size + ux*size*0.4);
       ctx.closePath();
-      ctx.fillStyle = GREEN;
+      ctx.fillStyle = NODE_GREEN;
       ctx.fill();
       ctx.restore();
     }
@@ -117,14 +152,14 @@
     function draw() {
       ctx.clearRect(0, 0, W, H);
 
-      // Business boundary (rounded dashed rect)
-      const [bx, by, bw, bh, br] = [38, 30, 524, 284, 14];
+      // Business boundary box (dashed rounded rect)
+      const [bx, by, bw, bh, br] = [112, 28, 518, 352, 14];
       ctx.beginPath();
-      ctx.moveTo(bx + br, by);
-      ctx.lineTo(bx + bw - br, by);  ctx.arcTo(bx + bw, by,      bx + bw, by + br,      br);
-      ctx.lineTo(bx + bw, by + bh - br); ctx.arcTo(bx + bw, by + bh, bx + bw - br, by + bh, br);
-      ctx.lineTo(bx + br, by + bh); ctx.arcTo(bx, by + bh, bx, by + bh - br, br);
-      ctx.lineTo(bx, by + br); ctx.arcTo(bx, by, bx + br, by, br);
+      ctx.moveTo(bx+br, by);
+      ctx.lineTo(bx+bw-br, by);      ctx.arcTo(bx+bw, by,      bx+bw, by+br,      br);
+      ctx.lineTo(bx+bw, by+bh-br);   ctx.arcTo(bx+bw, by+bh,   bx+bw-br, by+bh,   br);
+      ctx.lineTo(bx+br, by+bh);      ctx.arcTo(bx,    by+bh,   bx, by+bh-br,      br);
+      ctx.lineTo(bx,    by+br);      ctx.arcTo(bx,    by,      bx+br, by,           br);
       ctx.closePath();
       ctx.fillStyle = '#F2F8F5';
       ctx.fill();
@@ -134,54 +169,70 @@
       ctx.stroke();
       ctx.setLineDash([]);
 
-      // Boundary label
       ctx.fillStyle = 'rgba(46, 93, 71, 0.4)';
       ctx.font = 'bold 9px sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
-      ctx.fillText('YOUR BUSINESS', bx + bw / 2, by + 7);
+      ctx.fillText('YOUR BUSINESS', bx + bw/2, by + 7);
 
-      // Primary connection lines
-      ctx.lineWidth = 1.5;
-      ctx.strokeStyle = 'rgba(46, 93, 71, 0.2)';
-      for (const e of connEps) {
+      // Cross edges (faint, bidirectional)
+      for (let i = 0; i < crossEdges.length; i++) {
+        const e = crossEps[i];
         ctx.beginPath();
         ctx.moveTo(e.x1, e.y1);
         ctx.lineTo(e.x2, e.y2);
+        ctx.lineWidth = 1.2;
+        ctx.strokeStyle = 'rgba(46, 93, 71, 0.17)';
         ctx.stroke();
-        drawArrowhead(e.x2, e.y2, e.ux, e.uy);
+        drawArrow(e.x2, e.y2,  e.ux,  e.uy, 5, 0.28);
+        drawArrow(e.x1, e.y1, -e.ux, -e.uy, 5, 0.28);
       }
 
-      // Feedback arc (dashed)
-      ctx.beginPath();
-      ctx.moveTo(fbEp.x1, fbEp.y1);
-      ctx.quadraticCurveTo(fbCp.x, fbCp.y, fbEp.x2, fbEp.y2);
-      ctx.setLineDash([5, 4]);
-      ctx.strokeStyle = 'rgba(46, 93, 71, 0.18)';
-      ctx.lineWidth = 1.5;
-      ctx.stroke();
-      ctx.setLineDash([]);
+      // Primary edges
+      for (let i = 0; i < primEdges.length; i++) {
+        const e = primEps[i];
+        ctx.beginPath();
+        ctx.moveTo(e.x1, e.y1);
+        ctx.lineTo(e.x2, e.y2);
+        ctx.lineWidth = 1.8;
+        ctx.strokeStyle = 'rgba(46, 93, 71, 0.30)';
+        ctx.stroke();
+        drawArrow(e.x2, e.y2, e.ux, e.uy, 6, 0.45);
+        if (i === 0) {
+          // Customer↔Website is bidirectional
+          drawArrow(e.x1, e.y1, -e.ux, -e.uy, 6, 0.45);
+        }
+      }
 
-      // Arrowhead at end of feedback arc — tangent direction at t=1 is 2*(P1 - CP)
-      const ftux = fbEp.x2 - fbCp.x, ftuy = fbEp.y2 - fbCp.y;
-      const ftd = Math.sqrt(ftux * ftux + ftuy * ftuy);
-      drawArrowhead(fbEp.x2, fbEp.y2, ftux / ftd, ftuy / ftd, 6, 0.35);
-
-      // Feedback label
-      ctx.fillStyle = 'rgba(46, 93, 71, 0.4)';
+      // "router" label below Website node
+      const web = nodes[1];
+      ctx.fillStyle = 'rgba(46, 93, 71, 0.45)';
       ctx.font = 'italic 8px sans-serif';
-      ctx.textAlign = 'left';
-      ctx.textBaseline = 'middle';
-      ctx.fillText('feedback', 48, 192);
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText('router', web.x, web.y + web.r + 4);
 
-      // Nodes (drawn on top so arcs tuck cleanly behind them)
+      // Nodes (drawn on top of edges)
       for (const node of nodes) {
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
-        ctx.fillStyle = GREEN;
-        ctx.fill();
+        if (node.external) {
+          ctx.fillStyle = CUST_COLOR;
+          ctx.fill();
+        } else if (node.healthy) {
+          ctx.fillStyle = NODE_GREEN;
+          ctx.fill();
+        } else {
+          ctx.fillStyle = GREY_NODE;
+          ctx.fill();
+          ctx.setLineDash([4, 3]);
+          ctx.strokeStyle = 'rgba(60,60,60,0.45)';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+          ctx.setLineDash([]);
+        }
 
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = 'rgba(255,255,255,0.92)';
         ctx.font = 'bold 9px sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -196,46 +247,44 @@
       // Animated dots
       for (const dot of dots) {
         dot.t = (dot.t + dot.speed) % 1;
-
-        if (dot.kind === 'primary') {
-          const pos = lerp(connEps[dot.ci], dot.t);
-          ctx.beginPath();
-          ctx.arc(pos.x, pos.y, 5, 0, Math.PI * 2);
-          ctx.fillStyle = ORANGE;
-          ctx.fill();
-        } else {
-          const pos = bezierPt(fbEp.x1, fbEp.y1, fbCp.x, fbCp.y, fbEp.x2, fbEp.y2, dot.t);
-          ctx.beginPath();
-          ctx.arc(pos.x, pos.y, 4, 0, Math.PI * 2);
-          ctx.fillStyle = FEEDBACK_COLOR;
-          ctx.fill();
-        }
+        const eps = dot.kind === 'prim' ? primEps : crossEps;
+        const pos = edgePos(eps[dot.ci], dot.t, dot.rev);
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, dot.r, 0, Math.PI * 2);
+        ctx.fillStyle = dot.color;
+        ctx.fill();
       }
 
       // Legend
+      const ly = 400;
       ctx.textAlign = 'left';
       ctx.textBaseline = 'middle';
-      ctx.font = '11px sans-serif';
+      ctx.font = '10px sans-serif';
 
-      ctx.beginPath();
-      ctx.arc(135, 328, 5, 0, Math.PI * 2);
-      ctx.fillStyle = ORANGE;
-      ctx.fill();
-      ctx.fillStyle = '#555';
-      ctx.fillText('information flow', 146, 328);
+      ctx.beginPath(); ctx.arc(52, ly, 5, 0, Math.PI*2);
+      ctx.fillStyle = ORANGE; ctx.fill();
+      ctx.fillStyle = '#666'; ctx.fillText('request for value', 63, ly);
 
-      ctx.beginPath();
-      ctx.arc(325, 328, 4, 0, Math.PI * 2);
-      ctx.fillStyle = FEEDBACK_COLOR;
-      ctx.fill();
-      ctx.fillStyle = '#555';
-      ctx.fillText('feedback loop', 335, 328);
+      ctx.beginPath(); ctx.arc(215, ly, 6, 0, Math.PI*2);
+      ctx.fillStyle = GREEN_DOT; ctx.fill();
+      ctx.fillStyle = '#666'; ctx.fillText('return of value', 227, ly);
+
+      ctx.beginPath(); ctx.arc(380, ly, 5, 0, Math.PI*2);
+      ctx.fillStyle = CROSS_DOT; ctx.fill();
+      ctx.fillStyle = '#666'; ctx.fillText('internal flow', 391, ly);
+
+      ctx.beginPath(); ctx.arc(510, ly, 7, 0, Math.PI*2);
+      ctx.fillStyle = GREY_NODE; ctx.fill();
+      ctx.setLineDash([3, 2]);
+      ctx.strokeStyle = 'rgba(60,60,60,0.4)';
+      ctx.lineWidth = 1.5; ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#666'; ctx.fillText('unfriendly node', 523, ly);
 
       raf = requestAnimationFrame(draw);
     }
 
     draw();
-
     window.addEventListener('pagehide', () => cancelAnimationFrame(raf), { once: true });
   }
 </script>
