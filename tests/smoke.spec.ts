@@ -16,8 +16,8 @@ test.describe('Homepage', () => {
   });
 
   test('navigation links are present', async ({ page }) => {
-    const header = page.locator('header');
-    await expect(header.getByRole('link', { name: /work with me/i })).toBeVisible();
+    // On desktop: visible in header. On mobile: visible in hero. Check page-level.
+    await expect(page.getByRole('link', { name: /work with me/i }).first()).toBeVisible();
   });
 
   test('about section is present', async ({ page }) => {
@@ -44,6 +44,55 @@ test.describe('Homepage', () => {
   test('footer shows current year copyright', async ({ page }) => {
     const year = new Date().getFullYear().toString();
     await expect(page.locator('footer')).toContainText(year);
+  });
+});
+
+test.describe('Mobile navigation', () => {
+  test.use({ viewport: { width: 390, height: 844 } });
+
+  test('hamburger button is visible on narrow screens', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('#hamburger-btn')).toBeVisible();
+  });
+
+  test('desktop nav links are hidden on narrow screens', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('.nav')).toBeHidden();
+  });
+
+  test('mobile menu opens when hamburger is clicked', async ({ page }) => {
+    await page.goto('/');
+    await page.locator('#hamburger-btn').click();
+    await expect(page.locator('#mobile-menu')).toBeVisible();
+    await expect(page.locator('#mobile-menu').getByRole('link', { name: /portfolio/i })).toBeVisible();
+    await expect(page.locator('#mobile-menu').getByRole('link', { name: /blog/i })).toBeVisible();
+    await expect(page.locator('#mobile-menu').getByRole('link', { name: /about/i })).toBeVisible();
+  });
+
+  test('mobile menu closes when hamburger is clicked again', async ({ page }) => {
+    await page.goto('/');
+    await page.locator('#hamburger-btn').click();
+    await expect(page.locator('#mobile-menu')).toBeVisible();
+    await page.locator('#hamburger-btn').click();
+    await expect(page.locator('#mobile-menu')).toBeHidden();
+  });
+
+  test('mobile menu closes when a nav link is clicked', async ({ page }) => {
+    await page.goto('/');
+    await page.locator('#hamburger-btn').click();
+    await expect(page.locator('#mobile-menu')).toBeVisible();
+    await page.locator('#mobile-menu').getByRole('link', { name: /blog/i }).click();
+    await expect(page.locator('#mobile-menu')).toBeHidden();
+  });
+
+  test('hamburger aria-expanded updates on toggle', async ({ page }) => {
+    await page.goto('/');
+    const btn = page.locator('#hamburger-btn');
+    await expect(btn).toHaveAttribute('aria-expanded', 'false');
+    await btn.click();
+    await expect(btn).toHaveAttribute('aria-expanded', 'true');
+    await btn.click();
+    await expect(btn).toHaveAttribute('aria-expanded', 'false');
   });
 });
 
