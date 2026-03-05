@@ -157,35 +157,42 @@ declare module 'astro:content' {
   slug: "ai-reversing-website-advice";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
+} & { render(): Render[".md"] };
+"eecs-major-embedded-systems-ai.md": {
+	id: "eecs-major-embedded-systems-ai.md";
+  slug: "eecs-major-embedded-systems-ai";
+  body: string;
+  collection: "blog";
+  data: any
 } & { render(): Render[".md"] };
 "friendly-node.mdx": {
 	id: "friendly-node.mdx";
   slug: "friendly-node";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "health-tech-cofounder.md": {
 	id: "health-tech-cofounder.md";
   slug: "health-tech-cofounder";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".md"] };
 "pragmatic-devops-for-small-teams.md": {
 	id: "pragmatic-devops-for-small-teams.md";
   slug: "pragmatic-devops-for-small-teams";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".md"] };
 "when-to-build-vs-buy.md": {
 	id: "when-to-build-vs-buy.md";
   slug: "when-to-build-vs-buy";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".md"] };
 };
 "portfolio": {
@@ -194,77 +201,77 @@ declare module 'astro:content' {
   slug: "ai-startup-infrastructure";
   body: string;
   collection: "portfolio";
-  data: InferEntrySchema<"portfolio">
+  data: any
 } & { render(): Render[".md"] };
 "chenmed-d8-redesign.md": {
 	id: "chenmed-d8-redesign.md";
   slug: "chenmed-d8-redesign";
   body: string;
   collection: "portfolio";
-  data: InferEntrySchema<"portfolio">
+  data: any
 } & { render(): Render[".md"] };
 "clmp-wp-redesign.md": {
 	id: "clmp-wp-redesign.md";
   slug: "clmp-wp-redesign";
   body: string;
   collection: "portfolio";
-  data: InferEntrySchema<"portfolio">
+  data: any
 } & { render(): Render[".md"] };
 "csi-integrations.md": {
 	id: "csi-integrations.md";
   slug: "csi-integrations";
   body: string;
   collection: "portfolio";
-  data: InferEntrySchema<"portfolio">
+  data: any
 } & { render(): Render[".md"] };
 "cvt-subscriber-portal.md": {
 	id: "cvt-subscriber-portal.md";
   slug: "cvt-subscriber-portal";
   body: string;
   collection: "portfolio";
-  data: InferEntrySchema<"portfolio">
+  data: any
 } & { render(): Render[".md"] };
 "gohealth-d7-redesign.md": {
 	id: "gohealth-d7-redesign.md";
   slug: "gohealth-d7-redesign";
   body: string;
   collection: "portfolio";
-  data: InferEntrySchema<"portfolio">
+  data: any
 } & { render(): Render[".md"] };
 "lando.md": {
 	id: "lando.md";
   slug: "lando";
   body: string;
   collection: "portfolio";
-  data: InferEntrySchema<"portfolio">
+  data: any
 } & { render(): Render[".md"] };
 "millie-health.md": {
 	id: "millie-health.md";
   slug: "millie-health";
   body: string;
   collection: "portfolio";
-  data: InferEntrySchema<"portfolio">
+  data: any
 } & { render(): Render[".md"] };
 "poets-org.md": {
 	id: "poets-org.md";
   slug: "poets-org";
   body: string;
   collection: "portfolio";
-  data: InferEntrySchema<"portfolio">
+  data: any
 } & { render(): Render[".md"] };
 "sol-village.md": {
 	id: "sol-village.md";
   slug: "sol-village";
   body: string;
   collection: "portfolio";
-  data: InferEntrySchema<"portfolio">
+  data: any
 } & { render(): Render[".md"] };
 "usf-d8-migration.md": {
 	id: "usf-d8-migration.md";
   slug: "usf-d8-migration";
   body: string;
   collection: "portfolio";
-  data: InferEntrySchema<"portfolio">
+  data: any
 } & { render(): Render[".md"] };
 };
 
@@ -276,5 +283,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = typeof import("../../src/content/config.js");
+	export type ContentConfig = never;
 }
