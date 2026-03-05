@@ -8,6 +8,7 @@ tags: [AI, Strategy, Business]
 
 import FriendlyNodeDiagram from '../../components/FriendlyNodeDiagram.astro';
 import BusinessNodesDiagram from '../../components/BusinessNodesDiagram.astro';
+import RequestTimelineDiagram from '../../components/RequestTimelineDiagram.astro';
 
 We're all trying to get our brain stems wrapped around AI. In a previous blog post, I described our migration from "Ye Olde Worlde" to the New World of AI-enhanced business. Some of us are already on board the ships en route to this New World, but even we are seeing it imperfectly. We're visitors from a foreign land with outdated assumptions; just like the first colonists to the Americas, we need new words and new frameworks to adapt to our New World. Enter Friendly Node.
 
@@ -54,6 +55,21 @@ The nodes within your business also respond to RFVs (requests for value) with RO
 - Product feedback/development
 
 <BusinessNodesDiagram />
+
+### Tracing a Real Request
+
+The best way to expose inefficiency is to follow a single customer request from the moment it arrives to the moment it resolves. Before you optimize anything, document the actual path — not the ideal one:
+
+- How long did each transformation take?
+- Where did delays accumulate, and why?
+- Where did errors force a request to be sent back?
+- What was the total cycle time versus actual processing time?
+
+<RequestTimelineDiagram />
+
+In this example — a client inquiry moving toward a signed contract — the full cycle took eight days. Actual work: roughly five hours. The rest was waiting: for someone to notice the form submission, for a calendar slot, for legal to review. One handoff was sent back entirely because budget information was missing from the initial scope call.
+
+That ratio — 8 days of cycle time for 5 hours of processing — is typical. And it's where AI creates the most obvious value: collapsing wait times, pre-filling missing information before handoffs, and catching the "missing budget" class of errors before they trigger a loop.
 
 These nodes are usually task-based. You can start by identifying general node "buckets": for example, sales. But ideally you can break these general nodes into more granular responsibilities: sales might include prospecting, RFP responses, and maintaining existing customer relationships.
 
