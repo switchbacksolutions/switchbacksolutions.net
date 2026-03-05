@@ -61,6 +61,6 @@ test.describe('Work / Portfolio page', () => {
     const firstItem = page.locator('a[href^="/work/"]').first();
     const href = await firstItem.getAttribute('href');
     await page.goto(href!);
-    await expect(page.locator('h1')).toBeVisible();
+    await expect(page.locator('h1.detail-title')).toBeVisible();
   });
 });

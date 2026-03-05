@@ -10,7 +10,7 @@ test.describe('Blog listing page', () => {
   });
 
   test('renders the hero heading', async ({ page }) => {
-    await expect(page.locator('h1')).toContainText('Writing');
+    await expect(page.locator('h1.blog-title')).toContainText('Writing');
   });
 
   test('lists at least one post', async ({ page }) => {
@@ -39,7 +39,7 @@ test.describe('Blog post detail page', () => {
     const href = await firstPostLink.getAttribute('href');
     await page.goto(href!);
 
-    await expect(page.locator('h1')).toBeVisible();
+    await expect(page.locator('h1.post-title')).toBeVisible();
     await expect(page.locator('time')).toBeVisible();
     await expect(page.locator('.post-body')).toBeVisible();
   });
