@@ -21,7 +21,7 @@ const currentYear = new Date().getFullYear();
         <p class="hero-subtitle">
           Trail usage data is how you win grants, justify maintenance, and make the case for new infrastructure. I'm building an affordable trail counter — and looking for pilot partners to deploy it.
         </p>
-        <a href="/contact" class="cta-button">Talk to Alec</a>
+        <a href="/contact" class="cta-button">Become a Pilot Partner</a>
       </div>
       <div class="hero-image">
         <img
@@ -46,7 +46,7 @@ const currentYear = new Date().getFullYear();
             I've built a trail counter on affordable, open hardware — battery-powered, weather-resistant, and deployable by volunteers. It detects and logs trail user counts without capturing any personally identifiable information.
           </p>
           <p>
-            The data comes to you in formats you can actually use: spreadsheets, simple dashboards, grant-ready reports. No platform fees. No vendor lock-in. No annual contract.
+            The data comes to you in formats you can actually use: spreadsheets, simple dashboards, grant-ready reports.
           </p>
         </div>
       </div>
@@ -71,10 +71,14 @@ const currentYear = new Date().getFullYear();
               <strong>Battery-powered</strong>
               <span>No wiring or power source required — deployable by volunteers anywhere on the trail</span>
             </div>
+            <div class="spotlight-feature">
+              <strong>IP67 waterproof</strong>
+              <span>Fully sealed enclosure withstands rain, mud, and submersion — built to stay in the field year-round</span>
+            </div>
           </div>
           <div class="spotlight-image">
             <img
-              src="/images/trails/trail-counter-product1.png"
+              src="/images/trails/trail-counter-product2.png"
               alt="Trak Count trail counter — weatherproof unit"
               width="480"
               height="480"
@@ -90,8 +94,12 @@ const currentYear = new Date().getFullYear();
               <span>Open hardware keeps unit cost well below commercial alternatives</span>
             </div>
             <div class="spotlight-feature">
-              <strong>Your data</strong>
-              <span>No proprietary platform, no recurring fees, no vendor dependency</span>
+              <strong>Always connected</strong>
+              <span>Built-in cellular modem transmits counts in realtime — no manual retrieval, no site visits to pull data</span>
+            </div>
+            <div class="spotlight-feature">
+              <strong>Mounts anywhere</strong>
+              <span>Multiple mounting points and a range of mount options — attach to posts, trees, signs, or trail infrastructure of any size</span>
             </div>
           </div>
         </div>
@@ -194,26 +202,6 @@ const currentYear = new Date().getFullYear();
                 <span>MVTA website</span>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Alec -->
-    <section class="section" id="about">
-      <div class="container">
-        <div class="about-content">
-          <div class="about-text">
-            <h2 class="section-title left-aligned">Why Switchback Solutions</h2>
-            <p>
-              I'm Alec — a senior software engineer and technical architect based in the Sierra Nevada foothills. My weekend baseline is a long trail run or a ride on the local singletrack. I understand what you're trying to protect because it's where I spend my time too.
-            </p>
-            <p>
-              My professional background is fifteen-plus years building software for organizations that need to do a lot with a little: nonprofits, early-stage startups, lean government teams. I know how to build things that actually work in production, don't require a dedicated IT department to maintain, and won't become a liability when the one person who understands them leaves.
-            </p>
-            <p>
-              Trail technology is a natural overlap of the work I've always done and the terrain I care about. I'm not pitching you a generic agency product. I'm building tools I'd want to use myself.
-            </p>
           </div>
         </div>
       </div>
@@ -449,13 +437,15 @@ const currentYear = new Date().getFullYear();
 
   .spotlight-image {
     flex-shrink: 0;
-    width: 280px;
+    width: 360px;
   }
 
   .spotlight-image img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 420px;
+    object-fit: cover;
+    object-position: center;
   }
 
   .spotlight-features {
@@ -817,6 +807,10 @@ const currentYear = new Date().getFullYear();
     .spotlight-image {
       width: 220px;
       margin: 0 auto;
+    }
+
+    .spotlight-image img {
+      height: 360px;
     }
 
     .spotlight-features-left,
