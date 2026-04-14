@@ -1,0 +1,671 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+const currentYear = new Date().getFullYear();
+---
+
+<BaseLayout
+  title="Trak Count — Affordable Trail Counters — Switchback Solutions"
+  description="Trak Count is a battery-powered, privacy-first trail counter built on open hardware. Affordable trail usage data for grants, maintenance, and stewardship reporting."
+>
+  <Header />
+
+  <main class="page">
+
+    <!-- Hero -->
+    <section class="hero-section">
+      <div class="hero-text">
+        <p class="eyebrow">Trail Counter</p>
+        <h1 class="hero-title">Know Who's Using Your Trails — Without Breaking the Budget</h1>
+        <p class="hero-subtitle">
+          Trail usage data is how you win grants, justify maintenance, and make the case for new infrastructure. Trak Count makes it affordable.
+        </p>
+        <a href="/contact" class="cta-button">Become a Pilot Partner &rarr;</a>
+      </div>
+      <div class="hero-image">
+        <img
+          src="/images/trails/trail-counter-natural.png"
+          alt="Trak Count trail counter deployed in a mossy forest setting"
+          width="1200"
+          height="800"
+        />
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label">About Trak Count</div>
+        <h2 class="section-title">Affordable Data. Formats You Can Actually Use.</h2>
+        <div class="prose-block">
+          <p class="lead">
+            Commercial trail counters cost $500–$1,500 per unit, and the data is usually locked in a proprietary dashboard you have to keep paying for.
+          </p>
+          <p>
+            Trak Count is built on affordable, open hardware — battery-powered, weather-resistant, and deployable by volunteers. It detects and logs trail user counts without capturing any personally identifiable information.
+          </p>
+          <p>
+            The data comes to you in formats you can actually use: spreadsheets, simple dashboards, grant-ready reports.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Spotlight -->
+    <section class="section product-spotlight-section">
+      <div class="container">
+        <div class="product-name-label">Trak Count</div>
+        <h2 class="product-heading">Built for the Field</h2>
+        <div class="product-spotlight">
+          <div class="spotlight-features spotlight-features-left">
+            <div class="spotlight-feature">
+              <strong>Grant-ready data</strong>
+              <span>Usage counts, seasonal patterns, and trend reports built for funding applications</span>
+            </div>
+            <div class="spotlight-feature">
+              <strong>Stewardship evidence</strong>
+              <span>Demonstrate trail demand to justify maintenance, signage, and infrastructure investment</span>
+            </div>
+            <div class="spotlight-feature">
+              <strong>Battery-powered</strong>
+              <span>No wiring or power source required — deployable by volunteers anywhere on the trail</span>
+            </div>
+            <div class="spotlight-feature">
+              <strong>IP67 waterproof</strong>
+              <span>Fully sealed enclosure withstands rain, mud, and submersion — built to stay in the field year-round</span>
+            </div>
+          </div>
+          <div class="spotlight-image">
+            <img
+              src="/images/trails/trail-counter-product2.png"
+              alt="Trak Count trail counter — weatherproof unit"
+              width="480"
+              height="480"
+            />
+          </div>
+          <div class="spotlight-features spotlight-features-right">
+            <div class="spotlight-feature">
+              <strong>Privacy-first</strong>
+              <span>Anonymous counts only — no photos, no tracking, no personally identifiable information</span>
+            </div>
+            <div class="spotlight-feature">
+              <strong>Fraction of the cost</strong>
+              <span>Open hardware keeps unit cost well below commercial alternatives</span>
+            </div>
+            <div class="spotlight-feature">
+              <strong>Always connected</strong>
+              <span>Built-in cellular modem transmits counts in realtime — no manual retrieval, no site visits to pull data</span>
+            </div>
+            <div class="spotlight-feature">
+              <strong>Mounts anywhere</strong>
+              <span>Multiple mounting points and a range of mount options — attach to posts, trees, signs, or trail infrastructure of any size</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works + Pilot CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="how-it-works">
+          <h3 class="how-heading">How It Works</h3>
+          <div class="steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-text">
+                <strong>Deploy</strong>
+                A volunteer mounts the weatherproof unit at the trailhead. Battery-powered — no wiring, no power source needed.
+              </div>
+            </div>
+            <div class="step-arrow">&rarr;</div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-text">
+                <strong>Count</strong>
+                The sensor detects passing trail users and logs anonymous counts with timestamps. No photos, no tracking.
+              </div>
+            </div>
+            <div class="step-arrow">&rarr;</div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-text">
+                <strong>Report</strong>
+                Data syncs to a simple dashboard. Export usage summaries, seasonal trends, and peak-use charts whenever you need them.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pilot-banner">
+          <div class="pilot-banner-text">
+            <strong>Now seeking pilot partners.</strong>
+            We're looking for 2–3 organizations to deploy units on real trails — in exchange for early access pricing and direct input on the product roadmap.
+          </div>
+          <a href="/contact" class="pilot-banner-cta">Become a Pilot Partner &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Let's Talk About Your Trails</h2>
+        <p>Whether you're ready to deploy or just want to understand what trail usage data could do for your organization — we're happy to have a no-pressure conversation.</p>
+        <a href="/contact" class="cta-button-large">Get in Touch</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <div class="logo-icon-small">S</div>
+          <div class="footer-logo-text">
+            <div>SWITCHBACK</div>
+            <div>SOLUTIONS</div>
+          </div>
+        </div>
+        <p class="footer-tagline">Engineering Leadership for the AI Era</p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; {currentYear} Switchback Solutions. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>
+
+<style>
+  .page {
+    padding-top: 80px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Hero */
+  .hero-section {
+    background-color: var(--color-primary);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 520px;
+    overflow: hidden;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 3rem 5rem 2rem;
+    max-width: 680px;
+    margin-left: auto;
+    color: white;
+  }
+
+  .hero-image {
+    overflow: hidden;
+  }
+
+  .hero-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .eyebrow {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    font-weight: 700;
+    color: white;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    align-self: flex-start;
+    background-color: var(--color-accent);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+
+  .cta-button:hover {
+    background-color: #d4944a;
+    transform: translateY(-2px);
+  }
+
+  /* Sections */
+  .section {
+    padding: 5rem 0;
+  }
+
+  .section-label {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    opacity: 0.6;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 2.5rem;
+    max-width: 760px;
+    line-height: 1.25;
+  }
+
+  .prose-block {
+    max-width: 800px;
+    font-size: 1.075rem;
+    line-height: 1.85;
+    color: var(--color-dark);
+  }
+
+  .prose-block p {
+    margin-bottom: 1.5rem;
+  }
+
+  .prose-block p:last-child {
+    margin-bottom: 0;
+  }
+
+  .lead {
+    font-size: 1.175rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  /* Product spotlight */
+  .product-spotlight-section {
+    background-color: #E5E5E5;
+    text-align: center;
+  }
+
+  .product-name-label {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    opacity: 0.6;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-heading {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 3rem;
+    line-height: 1.25;
+  }
+
+  .product-spotlight {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .spotlight-image {
+    flex-shrink: 0;
+    width: 360px;
+  }
+
+  .spotlight-image img {
+    display: block;
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .spotlight-features {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .spotlight-features-left {
+    text-align: right;
+  }
+
+  .spotlight-features-right {
+    text-align: left;
+  }
+
+  .spotlight-feature strong {
+    display: block;
+    font-size: 1rem;
+    color: var(--color-primary);
+    margin-bottom: 0.3rem;
+  }
+
+  .spotlight-feature span {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-dark);
+    opacity: 0.8;
+  }
+
+  /* How It Works */
+  .how-it-works {
+    margin-bottom: 3.5rem;
+  }
+
+  .how-heading {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+  }
+
+  .steps {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .step {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .step-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .step-text {
+    font-size: 0.975rem;
+    line-height: 1.65;
+    color: var(--color-dark);
+    padding-top: 0.4rem;
+  }
+
+  .step-text strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+  }
+
+  .step-arrow {
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  /* Pilot banner */
+  .pilot-banner {
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: 8px;
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .pilot-banner-text {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    max-width: 620px;
+  }
+
+  .pilot-banner-cta {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: white;
+    padding: 0.875rem 1.75rem;
+    border-radius: 6px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    white-space: nowrap;
+    transition: background-color 0.2s, transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .pilot-banner-cta:hover {
+    background-color: #d4944a;
+    transform: translateY(-2px);
+  }
+
+  /* CTA section */
+  .cta-section {
+    padding: 5rem 0;
+    text-align: center;
+    background-color: var(--color-light);
+  }
+
+  .cta-section h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .cta-section p {
+    font-size: 1.125rem;
+    color: var(--color-dark);
+    margin-bottom: 2rem;
+    opacity: 0.85;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-button-large {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: white;
+    padding: 1.25rem 2.5rem;
+    border-radius: 6px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 500;
+    font-size: 1.125rem;
+    transition: background-color 0.2s, transform 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .cta-button-large:hover {
+    background-color: #d4944a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Footer */
+  .footer {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 3rem 0 2rem;
+  }
+
+  .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .logo-icon-small {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: white;
+    border: 2px solid white;
+    border-radius: 4px;
+  }
+
+  .footer-logo-text {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+  }
+
+  .footer-tagline {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.875rem;
+    opacity: 0.7;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .product-spotlight {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .spotlight-image {
+      width: 220px;
+      margin: 0 auto;
+    }
+
+    .spotlight-image img {
+      height: 360px;
+    }
+
+    .spotlight-features-left,
+    .spotlight-features-right {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 3.5rem 0;
+    }
+
+    .hero-section {
+      grid-template-columns: 1fr;
+      min-height: unset;
+    }
+
+    .hero-text {
+      padding: 3.5rem 1.5rem 2.5rem;
+      max-width: none;
+      margin-left: 0;
+    }
+
+    .hero-image {
+      height: 260px;
+    }
+
+    .container {
+      padding: 0 1.5rem;
+    }
+
+    .cta-section {
+      padding: 3.5rem 0;
+    }
+
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .step-arrow {
+      display: none;
+    }
+
+    .steps {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .pilot-banner {
+      flex-direction: column;
+      padding: 1.5rem;
+    }
+
+    .pilot-banner-cta {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
