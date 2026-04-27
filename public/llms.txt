@@ -8,13 +8,19 @@
 - [AI-First Product Development](https://switchbacksolutions.net/): Building products from the ground up with AI embedded from the start — not retrofitted later. For founders without a tech team who need a technical partner to move fast, stay lean, and make smart bets about what to build.
 - [AI Strategy & Implementation](https://switchbacksolutions.net/): For companies with an existing team and a specific AI goal. Identify the right problems for AI to solve, architect the right solution, and execute through to production. No proof-of-concepts that never ship.
 
+## Trails Products
+
+- [Trails Overview](https://switchbacksolutions.net/trails) | [Markdown](https://switchbacksolutions.net/trails.md): Technology built for trail organizations — land conservancies, mountain bike groups, and trail advocates.
+- [Trak Count — Trail Counter](https://switchbacksolutions.net/trail-counter) | [Markdown](https://switchbacksolutions.net/trail-counter.md): Affordable, battery-powered, privacy-first trail usage counter built on open hardware. Grant-ready data at a fraction of the cost of commercial units.
+- [Trail Websites](https://switchbacksolutions.net/trail-websites) | [Markdown](https://switchbacksolutions.net/trail-websites.md): Websites built for trail discovery and donor conversion — filterable trail browsing, fundraising-first structure, low hosting costs.
+
 ## About
 
-- [About Alec](https://switchbacksolutions.net/about): Background, approach, and what it looks like to work together.
+- [About Alec](https://switchbacksolutions.net/about) | [Markdown](https://switchbacksolutions.net/about.md): Background, approach, and what it looks like to work together.
 
 ## Work & Portfolio
 
-- [Portfolio](https://switchbacksolutions.net/work): Selected case studies across AI infrastructure, healthcare platforms, subscriber portals, CMS migrations, and open source tooling.
+- [Portfolio](https://switchbacksolutions.net/work): Selected case studies across AI infrastructure, healthcare platforms, subscriber portals, CMS migrations, and open source tooling. Individual case studies available as markdown at `/work/[id].md`.
 
 ## Writing
 

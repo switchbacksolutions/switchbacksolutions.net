@@ -30,7 +30,7 @@ const portfolioItems = await getPortfolioItems();
       <div class="container">
         <div class="portfolio-grid">
           {portfolioItems.map((item) => (
-            <a href={`/work/${item.id}`} class="portfolio-item-link">
+            <a href={`/work/${item.id.replace(/\.md$/, '')}`} class="portfolio-item-link">
               <article class="portfolio-item">
                 <div class="portfolio-content">
                   <div class="portfolio-header">
