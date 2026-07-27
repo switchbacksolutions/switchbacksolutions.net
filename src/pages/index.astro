@@ -2,8 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-
-const currentYear = new Date().getFullYear();
+import Footer from '../components/Footer.astro';
 ---
 
 <BaseLayout>
@@ -14,20 +13,20 @@ const currentYear = new Date().getFullYear();
     <!-- About Section -->
     <section id="about" class="section">
       <div class="container">
-        <h2 class="section-title">Your Technical Leader, From Day One</h2>
+        <h2 class="section-title">Your Technical Leadership Team, From Day One</h2>
         <div class="content-grid">
           <div class="content-block">
             <p class="lead">
-              I'm Alec — a senior technical architect and AI engineer who steps into founding teams and growing companies as their drop-in CTO or VP of Engineering.
+              We're Alec and Sarah — senior technical leaders who step into founding teams and growing companies as their drop-in CTO or VP of Engineering.
             </p>
             <p>
-              Most early-stage teams hit the same inflection point: you need serious technical leadership, but you're not ready to hire a full-time CTO or hand the work to an outsourcing firm. I fill that gap — hands-on, strategic, and focused on building the right things in the right order.
+              Most early-stage teams hit the same inflection point: you need serious technical leadership, but you're not ready to hire a full-time CTO or hand the work to an outsourcing firm. We fill that gap — hands-on, strategic, and focused on building the right things in the right order.
             </p>
             <p>
-              My work centers on AI-first software development: helping you think clearly about where AI actually belongs in your product and your process — and then building it. Not because AI is trendy, but because it changes the economics of what a lean team can accomplish.
+              Our work centers on AI-first software development: helping you think clearly about where AI actually belongs in your product and your process — and then building it. Not because AI is trendy, but because it changes the economics of what a lean team can accomplish.
             </p>
             <p>
-              Think of me as the technical co-founder who already knows the terrain. I help you move fast without the false starts, and build something that holds up.
+              Think of us as the technical co-founders who already know the terrain. We help you move fast without the false starts, and build something that holds up.
             </p>
           </div>
         </div>
@@ -37,24 +36,24 @@ const currentYear = new Date().getFullYear();
     <!-- Services Section -->
     <section id="services" class="section section-alt">
       <div class="container">
-        <h2 class="section-title">What I Do</h2>
+        <h2 class="section-title">What We Do</h2>
         <div class="services-grid">
           <div class="service-card">
             <h3>Fractional Technical Leadership</h3>
             <p>
-              Your drop-in CTO or VP of Engineering. I own your technical direction — architecture decisions, vendor selection, technical roadmap, and hands-on development. Strategic and operational, from day one.
+              Your drop-in CTO or VP of Engineering. We own your technical direction — architecture decisions, vendor selection, technical roadmap, and hands-on development. Strategic and operational, from day one.
             </p>
           </div>
           <div class="service-card">
             <h3>AI-First Product Development</h3>
             <p>
-              For founders without a tech team. I build your product from the ground up with AI embedded from the start — not retrofitted later. That means moving faster, staying leaner, and making smarter bets about what to build.
+              For founders without a tech team. We build your product from the ground up with AI embedded from the start — not retrofitted later. That means moving faster, staying leaner, and making smarter bets about what to build.
             </p>
           </div>
           <div class="service-card">
             <h3>AI Strategy & Implementation</h3>
             <p>
-              For companies with a specific AI goal and an existing team. I help you identify where AI actually moves the needle, architect a solution that works in production, and see it through to delivery. No demos that fall apart. No AI for AI's sake.
+              For companies with a specific AI goal and an existing team. We help you identify where AI actually moves the needle, architect a solution that works in production, and see it through to delivery. No demos that fall apart. No AI for AI's sake.
             </p>
           </div>
         </div>
@@ -64,18 +63,18 @@ const currentYear = new Date().getFullYear();
     <!-- Ideal Clients Section -->
     <section id="work" class="section">
       <div class="container">
-        <h2 class="section-title">Who I Work With</h2>
+        <h2 class="section-title">Who We Work With</h2>
         <div class="clients-grid">
           <div class="client-type">
             <h3>Early-Stage Founders</h3>
             <p>
-              You're building something real and you need technical leadership — not an outsourcing firm, not an engineering hire you're not ready to make. I step in as your technical co-founder: shaping the product, making the hard calls, and building alongside you until you're ready to grow your own team.
+              You're building something real and you need technical leadership — not an outsourcing firm, not an engineering hire you're not ready to make. We step in as your technical co-founders: shaping the product, making the hard calls, and building alongside you until you're ready to grow your own team.
             </p>
           </div>
           <div class="client-type">
             <h3>Companies with an AI Initiative</h3>
             <p>
-              You know AI matters to your business and you have a specific outcome in mind. What you need is someone who can cut through the noise, identify the right problems for AI to solve, and execute an implementation that actually works in production — not a proof of concept that never ships.
+              You know AI matters to your business and you have a specific outcome in mind. What you need is a team that can cut through the noise, identify the right problems for AI to solve, and execute an implementation that actually works in production — not a proof of concept that never ships.
             </p>
           </div>
         </div>
@@ -84,23 +83,7 @@ const currentYear = new Date().getFullYear();
 
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <div class="logo-icon-small">S</div>
-          <div class="footer-logo-text">
-            <div>SWITCHBACK</div>
-            <div>SOLUTIONS</div>
-          </div>
-        </div>
-        <p class="footer-tagline">Engineering Leadership for the AI Era</p>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; {currentYear} Switchback Solutions. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <Footer />
 </BaseLayout>
 
 <style>
@@ -201,65 +184,6 @@ const currentYear = new Date().getFullYear();
     color: var(--color-dark);
   }
 
-  .footer {
-    background-color: var(--color-primary);
-    color: white;
-    padding: 3rem 0 2rem;
-  }
-
-  .footer-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
-
-  .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .logo-icon-small {
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 700;
-    font-size: 1.25rem;
-    color: white;
-    border: 2px solid white;
-    border-radius: 4px;
-  }
-
-  .footer-logo-text {
-    display: flex;
-    flex-direction: column;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 700;
-    font-size: 0.875rem;
-    letter-spacing: 0.05em;
-    line-height: 1.2;
-  }
-
-  .footer-tagline {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 1rem;
-    opacity: 0.9;
-  }
-
-  .footer-bottom {
-    text-align: center;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 0.875rem;
-    opacity: 0.7;
-  }
-
   @media (max-width: 768px) {
     .section {
       padding: 3rem 0;
@@ -281,11 +205,6 @@ const currentYear = new Date().getFullYear();
 
     .service-card {
       padding: 1.5rem;
-    }
-
-    .footer-content {
-      flex-direction: column;
-      text-align: center;
     }
   }
 </style>

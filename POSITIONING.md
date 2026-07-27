@@ -4,41 +4,43 @@
 
 ---
 
-## The Person
+## The People
 
-**Alec** is a senior technical architect and AI engineer operating through **Switchback Solutions**. He works hands-on — not as a pure advisor — embedding directly into founding teams and companies as their drop-in technical leader.
+**Switchback Solutions** is a joint consulting practice co-founded by **Alec Reynolds** and **Sarah Reynolds**. Both work hands-on — not as pure advisors — embedding directly into founding teams and companies as drop-in technical leaders.
 
-He has deep experience across software development, DevOps, and AI-first product development, with strong proof points in health tech and finance (though the brand is intentionally industry-agnostic).
+**Alec** is a senior technical architect and AI engineer, with deep experience across software development, DevOps, and AI-first product development, and strong proof points in health tech and finance (though the brand is intentionally industry-agnostic).
+
+**Sarah** is a senior engineering leader with a background spanning startup CTO roles and scaling engineering orgs at growth-stage companies. Sarah co-founded and served as CTO of Millie, and previously led engineering at Omada Health — growing the org from roughly 10 to 70+ engineers across data, growth, infrastructure, and billing teams — after starting as a software architect there and serving as CTO of Crohnology (YC/Rock Health) earlier in their career.
 
 ---
 
 ## The Core Positioning
 
-Alec is the **drop-in CTO or VP of Engineering** for teams that need senior technical leadership but aren't ready for — or don't want — a full-time hire.
+Alec and Sarah are the **drop-in CTO or VP of Engineering** for teams that need senior technical leadership but aren't ready for — or don't want — a full-time hire.
 
-His differentiator is **AI-first software development**: a genuine methodology for how companies should think about building software today. This means:
+Their differentiator is **AI-first software development**: a genuine methodology for how companies should think about building software today. This means:
 
 - Helping companies identify *which* problems are actually good fits for AI/LLMs (and which aren't)
 - Building products and systems with AI embedded from day one, not retrofitted later
 - Using AI-assisted development practices to help lean teams move faster without over-hiring
 
-He works with both early-stage companies (no tech team yet) and established companies (existing team, specific AI goal).
+They work with both early-stage companies (no tech team yet) and established companies (existing team, specific AI goal).
 
 ---
 
 ## Target Audiences
 
 ### 1. Early-Stage Founders (Seed / Series A)
-Founders who have a vision and a business but no internal tech team. They need someone who can own the technical direction, make architecture decisions, and build — not just advise. Alec fills the role of technical co-founder: shaping the product, making the hard calls, and building alongside them until they're ready to grow their own team.
+Founders who have a vision and a business but no internal tech team. They need someone who can own the technical direction, make architecture decisions, and build — not just advise. Alec and Sarah fill the role of technical co-founders: shaping the product, making the hard calls, and building alongside them until they're ready to grow their own team.
 
 **Their pain:** "We need to build software but aren't ready to hire a CTO or an outsourcing firm."
-**What Alec offers:** Technical co-founder-level ownership, hands-on and strategic.
+**What we offer:** Technical co-founder-level ownership, hands-on and strategic.
 
 ### 2. Established Companies with an AI Initiative
 Companies that know AI matters to their business and have a specific outcome in mind. They have an internal team but need senior-level technical leadership to cut through the noise, identify the right problems for AI to solve, and execute an implementation that actually works in production.
 
 **Their pain:** "We know we need to do something with AI, but we don't know exactly what — or how to do it right."
-**What Alec offers:** Clear-eyed AI strategy plus hands-on execution to production.
+**What we offer:** Clear-eyed AI strategy plus hands-on execution to production.
 
 ---
 
@@ -55,11 +57,11 @@ For companies with an existing team and a specific AI goal. Identify the right p
 
 ---
 
-## What Alec Is NOT
+## What Switchback Is NOT
 
 - A dev shop or outsourcing firm
-- A pure strategist who doesn't build
-- An AI hype vendor (he's as useful for knowing when *not* to use AI)
+- Pure strategists who don't build
+- AI hype vendors (equally useful for knowing when *not* to use AI)
 - Industry-specific (health tech and finance are proof points, not brand pillars)
 - Selling generic digital transformation or CMS work
 
@@ -68,18 +70,20 @@ For companies with an existing team and a specific AI goal. Identify the right p
 ## Tone & Voice
 
 - **Direct and confident** — no hedging, no fluff
-- **Warm and personal** — clients are buying Alec's judgment, not a service menu
+- **Warm and personal** — clients are buying Alec and Sarah's judgment, not a service menu
 - **Practical and outcome-focused** — avoids hype, avoids jargon
 - **Senior without being inaccessible** — speaks clearly to non-technical founders
 - **Keeps the Switchback personality** — thoughtful, independent, moves with intention
 
 Avoid: buzzword-heavy AI language, generic "digital transformation" framing, corporate distance, anything that sounds like a consulting firm brochure.
 
+Site-wide copy (hero, services, footer, CTAs) speaks in **"we"** voice as the joint firm. The About page is the exception — individual accomplishments (Lando, Omada Health, past consultancies, Millie, Crohnology) stay attributed to whichever founder actually did them, in first person within their own bio.
+
 ---
 
 ## Brand
 
-- **Person:** Alec (personal brand, not company-first)
+- **People:** Alec Reynolds & Sarah Reynolds (co-founders, personal brand duo — not corporate-first)
 - **Company:** Switchback Solutions
 - **Tagline:** Engineering Leadership for the AI Era
 - **Website:** switchbacksolutions.net
@@ -91,9 +95,9 @@ The outdoors/navigation metaphor is part of the brand DNA. It can be used subtly
 
 ## Key Messages (building blocks for copy)
 
-- "I step in as the technical leader your team doesn't have yet."
-- "AI-first isn't a buzzword here — it's how I think about what to build and how to build it."
+- "We step in as the technical leadership your team doesn't have yet."
+- "AI-first isn't a buzzword here — it's how we think about what to build and how to build it."
 - "Most early-stage companies face the same inflection point: you need serious technical leadership but you're not ready for a full-time hire."
-- "I help you figure out where AI actually moves the needle — and then build it."
+- "We help you figure out where AI actually moves the needle — and then build it."
 - "No demos that fall apart. No AI for AI's sake."
 - "Move faster, stay lean, build the right things."

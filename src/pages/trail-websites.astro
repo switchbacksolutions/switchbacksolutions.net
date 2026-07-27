@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
-const currentYear = new Date().getFullYear();
 ---
 
 <BaseLayout
@@ -116,7 +116,7 @@ const currentYear = new Date().getFullYear();
             <div class="step-number">2</div>
             <div class="step-content">
               <strong>Proposal &amp; scope</strong>
-              <p>I send a written scope: what we'll build, what it'll cost, and a realistic timeline. Fixed-price, no surprises.</p>
+              <p>We send a written scope: what we'll build, what it'll cost, and a realistic timeline. Fixed-price, no surprises.</p>
             </div>
           </div>
           <div class="process-step">
@@ -141,30 +141,14 @@ const currentYear = new Date().getFullYear();
     <section class="cta-section">
       <div class="container">
         <h2>Ready to Talk About Your Site?</h2>
-        <p>A discovery call is free and takes 30 minutes. We'll figure out if this is a good fit — and if it's not, I'll tell you that too.</p>
+        <p>A discovery call is free and takes 30 minutes. We'll figure out if this is a good fit — and if it's not, we'll tell you that too.</p>
         <a href="/contact" class="cta-button-large">Get in Touch</a>
       </div>
     </section>
 
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <div class="logo-icon-small">S</div>
-          <div class="footer-logo-text">
-            <div>SWITCHBACK</div>
-            <div>SOLUTIONS</div>
-          </div>
-        </div>
-        <p class="footer-tagline">Engineering Leadership for the AI Era</p>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; {currentYear} Switchback Solutions. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <Footer />
 </BaseLayout>
 
 <style>
@@ -464,66 +448,6 @@ const currentYear = new Date().getFullYear();
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   }
 
-  /* Footer */
-  .footer {
-    background-color: var(--color-primary);
-    color: white;
-    padding: 3rem 0 2rem;
-  }
-
-  .footer-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
-
-  .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .logo-icon-small {
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 700;
-    font-size: 1.25rem;
-    color: white;
-    border: 2px solid white;
-    border-radius: 4px;
-  }
-
-  .footer-logo-text {
-    display: flex;
-    flex-direction: column;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 700;
-    font-size: 0.875rem;
-    letter-spacing: 0.05em;
-    line-height: 1.2;
-  }
-
-  .footer-tagline {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 1rem;
-    opacity: 0.9;
-  }
-
-  .footer-bottom {
-    text-align: center;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 0.875rem;
-    opacity: 0.7;
-  }
-
   /* Responsive */
   @media (max-width: 900px) {
     .two-col {
@@ -554,10 +478,6 @@ const currentYear = new Date().getFullYear();
       padding: 3.5rem 0;
     }
 
-    .footer-content {
-      flex-direction: column;
-      text-align: center;
-    }
 
     .process-steps {
       grid-template-columns: 1fr;

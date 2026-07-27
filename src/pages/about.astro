@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
-const currentYear = new Date().getFullYear();
 ---
 
-<BaseLayout>
+<BaseLayout title="About — Switchback Solutions">
   <Header />
 
   <main class="about-page">
@@ -13,36 +13,60 @@ const currentYear = new Date().getFullYear();
     <!-- Intro -->
     <section class="intro-section">
       <div class="container">
-        <div class="intro-grid">
-          <div class="intro-text">
-            <h1 class="page-title">About Alec</h1>
-            <p class="lead">
-              I'm a technical architect and AI engineer who has spent the last fifteen-plus years building software, scaling teams, and helping companies figure out what to build — and how to build it well.
-            </p>
-          </div>
-          <div class="intro-photo">
-            <img src="/images/alec-reynolds.jpeg" alt="Alec Reynolds" />
-          </div>
-        </div>
+        <h1 class="page-title">About Us</h1>
+        <p class="lead">
+          We're Alec and Sarah — co-founders of Switchback Solutions. Between us, we've spent close to three decades building software, scaling engineering teams, and helping companies figure out what to build — and how to build it well.
+        </p>
       </div>
     </section>
 
-    <!-- Bio -->
-    <section class="bio-section">
+    <!-- Bios -->
+    <section class="bios-section">
       <div class="container">
-        <div class="bio-content">
-          <p>
-            My career started in the San Francisco startup scene, where I learned what it looks like when technology and product thinking are firing on all cylinders — and what it costs when they're not. That experience shaped everything I've built since: two revenue-funded consultancies scaled to seven-figure annual revenue, a decade of leading multidisciplinary teams through complex web application challenges in healthcare, finance, education, and beyond.
-          </p>
-          <p>
-            More recently, I've been building <a href="https://lando.dev" target="_blank" rel="noopener">Lando</a> — a developer experience platform built on Docker and Node.js that makes local development dramatically simpler. With over 13,000 active monthly users, it's become a standard part of the development workflow for teams around the world. Building Lando deepened my understanding of developer needs at scale and reinforced something I already believed: the right tooling multiplies what a lean team can accomplish.
-          </p>
-          <p>
-            Today, my focus is AI-first software development. The tools available to engineering teams have fundamentally shifted, but the strategic question of <em>what</em> to build with them — and where AI actually moves the needle — still requires experienced judgment. I work with early-stage founders and forward-thinking companies as their drop-in technical leader: shaping product decisions, architecting systems, and building alongside teams that are ready to move.
-          </p>
-          <p>
-            My goal has always been to distribute the lessons of the SF startup world more broadly. The way those teams think about product, speed, and technical leverage shouldn't be locked inside a few zip codes.
-          </p>
+        <div class="bios-grid">
+
+          <!-- Alec -->
+          <article class="bio-card">
+            <img class="bio-photo" src="/images/alec-reynolds.jpeg" alt="Alec Reynolds" />
+            <h2 class="bio-name">Alec Reynolds</h2>
+            <p class="bio-role">Co-Founder &amp; Fractional CTO</p>
+            <div class="bio-text">
+              <p>
+                My career started in the San Francisco startup scene, where I learned what it looks like when technology and product thinking are firing on all cylinders — and what it costs when they're not. That experience shaped everything I've built since: two revenue-funded consultancies scaled to seven-figure annual revenue, a decade of leading multidisciplinary teams through complex web application challenges in healthcare, finance, education, and beyond.
+              </p>
+              <p>
+                More recently, I've been building <a href="https://lando.dev" target="_blank" rel="noopener">Lando</a> — a developer experience platform built on Docker and Node.js that makes local development dramatically simpler. With over 13,000 active monthly users, it's become a standard part of the development workflow for teams around the world.
+              </p>
+              <p>
+                Today, my focus is AI-first software development. The tools available to engineering teams have fundamentally shifted, but the strategic question of <em>what</em> to build with them — and where AI actually moves the needle — still requires experienced judgment. I work with early-stage founders and forward-thinking companies as their drop-in technical leader: shaping product decisions, architecting systems, and building alongside teams that are ready to move.
+              </p>
+              <p>
+                My natural habitat is the Sierra Nevada foothills, where I spend my time trail running, camping with my family, and tending a garden that's always more ambitious than the season allows. The same instinct that draws me to the mountains — knowing when to push, when to rest, and how to read the terrain — shows up in how I work with clients.
+              </p>
+            </div>
+          </article>
+
+          <!-- Sarah -->
+          <article class="bio-card">
+            <img class="bio-photo" src="/images/sarah-reynolds.jpeg" alt="Sarah Reynolds" />
+            <h2 class="bio-name">Sarah Reynolds</h2>
+            <p class="bio-role">Co-Founder &amp; Fractional CTO</p>
+            <div class="bio-text">
+              <p>
+                I started out in 2010 as a freelance developer, doing whatever the internet needed back then — Rails, WordPress, Drupal, jQuery, the works. That scrappy, do-everything era taught me more about shipping software than any classroom could.
+              </p>
+              <p>
+                In 2012, I joined <a href="https://en.wikipedia.org/wiki/Crohnology" target="_blank" rel="noopener">Crohnology</a> as CTO — a YC and Rock Health-backed startup with a mission I believed in. I built features, learned to manage a team, and got my first real taste of what it means to own a product's technical direction end to end.
+              </p>
+              <p>
+                From there I spent seven-plus years at Omada Health, starting as a software architect on the participant-facing app before spinning out and leading the B2B side — eligibility, billing, and reporting. As Director and then Senior Director of Engineering, I built and led the data engineering and growth teams and managed infrastructure, B2B, and billing — helping grow the engineering org from about 10 people to more than 70.
+              </p>
+              <p>
+                Most recently, I co-founded Millie, where I spent four years as CTO building the technical foundation of an early-stage company from scratch — the same kind of ground-floor work I now bring to the founders and teams I work with at Switchback.
+              </p>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
@@ -52,20 +76,20 @@ const currentYear = new Date().getFullYear();
       <div class="container">
         <div class="highlights-grid">
           <div class="highlight">
-            <div class="highlight-number">2</div>
-            <div class="highlight-label">Revenue-funded consultancies scaled to 7-figure annual revenue</div>
+            <div class="highlight-number">30+</div>
+            <div class="highlight-label">Combined years building and leading engineering teams</div>
+          </div>
+          <div class="highlight">
+            <div class="highlight-number">70+</div>
+            <div class="highlight-label">Grew Omada Health's engineering org from ~10 to 70+ engineers, under Sarah's leadership</div>
           </div>
           <div class="highlight">
             <div class="highlight-number">13K+</div>
-            <div class="highlight-label">Active monthly users of Lando, an open source developer tool I created</div>
+            <div class="highlight-label">Active monthly users of Lando, an open source developer tool Alec created</div>
           </div>
           <div class="highlight">
-            <div class="highlight-number">15+</div>
-            <div class="highlight-label">Years building software across startups, agencies, and enterprise</div>
-          </div>
-          <div class="highlight">
-            <div class="highlight-number">6+</div>
-            <div class="highlight-label">Industries including healthcare, finance, insurance, education, and nonprofits</div>
+            <div class="highlight-number">4</div>
+            <div class="highlight-label">Startups where one of us has served as founding or fractional CTO</div>
           </div>
         </div>
       </div>
@@ -77,21 +101,10 @@ const currentYear = new Date().getFullYear();
         <h2 class="section-title">Technical Background</h2>
         <div class="technical-content">
           <p>
-            I'm fluent across the full stack — Node.js, Python, PHP (Laravel, Symfony, Drupal), and the infrastructure that runs it all (Docker, AWS). I've designed and built HIPAA-compliant systems for healthcare platforms, architected pipelines for AI/ML workloads, and set up DevOps foundations that let small teams punch well above their weight.
+            Between us, we're fluent across the modern web stack — Node.js, Python, Ruby on Rails, PHP (Laravel, Symfony, Drupal), and the infrastructure that runs it all (Docker, AWS). We've designed and built HIPAA-compliant systems for healthcare platforms, architected pipelines for AI/ML and data engineering workloads, stood up billing and B2B systems from scratch, and set up DevOps foundations that let small teams punch well above their weight.
           </p>
           <p>
-            I'm deliberately tech-agnostic in my practice. The right stack is the one that fits the team, the constraints, and the problem — not the one that's trending. My portfolio speaks to that range better than any list of logos.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Personal -->
-    <section class="personal-section">
-      <div class="container">
-        <div class="personal-content">
-          <p>
-            My natural habitat is the Sierra Nevada foothills, where I spend my time trail running, camping with my family, and tending a garden that's always more ambitious than the season allows. The same instinct that draws me to the mountains — knowing when to push, when to rest, and how to read the terrain — shows up in how I work with clients.
+            We're deliberately tech-agnostic in our practice. The right stack is the one that fits the team, the constraints, and the problem — not the one that's trending. Our portfolio speaks to that range better than any list of logos.
           </p>
         </div>
       </div>
@@ -102,29 +115,13 @@ const currentYear = new Date().getFullYear();
       <div class="container">
         <h2>Ready to Build Something?</h2>
         <p>If you need a technical partner who can think strategically and build alongside you, let's talk.</p>
-        <a href="/contact" class="cta-button-large">Work with Me</a>
+        <a href="/contact" class="cta-button-large">Work with Us</a>
       </div>
     </section>
 
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <div class="logo-icon-small">S</div>
-          <div class="footer-logo-text">
-            <div>SWITCHBACK</div>
-            <div>SOLUTIONS</div>
-          </div>
-        </div>
-        <p class="footer-tagline">Engineering Leadership for the AI Era</p>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; {currentYear} Switchback Solutions. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <Footer />
 </BaseLayout>
 
 <style>
@@ -144,22 +141,6 @@ const currentYear = new Date().getFullYear();
     background-color: var(--color-light);
   }
 
-  .intro-grid {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 4rem;
-    align-items: center;
-  }
-
-  .intro-photo img {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center 20%;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
-  }
-
   .page-title {
     font-family: 'Raleway', sans-serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
@@ -176,37 +157,74 @@ const currentYear = new Date().getFullYear();
     font-weight: 500;
   }
 
-  /* Bio */
-  .bio-section {
-    padding: 4rem 0;
+  /* Bios */
+  .bios-section {
+    padding: 3rem 0 4rem;
   }
 
-  .bio-content {
-    max-width: 760px;
-    font-size: 1.125rem;
-    line-height: 1.85;
+  .bios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3.5rem;
+  }
+
+  .bio-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bio-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+    margin-bottom: 1.5rem;
+  }
+
+  .bio-name {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .bio-role {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-dark);
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .bio-text {
+    font-size: 1.0625rem;
+    line-height: 1.8;
     color: var(--color-dark);
   }
 
-  .bio-content p {
-    margin-bottom: 1.75rem;
+  .bio-text p {
+    margin-bottom: 1.5rem;
   }
 
-  .bio-content p:last-child {
+  .bio-text p:last-child {
     margin-bottom: 0;
   }
 
-  .bio-content a {
+  .bio-text a {
     color: var(--color-primary);
     text-decoration: underline;
     text-underline-offset: 3px;
   }
 
-  .bio-content a:hover {
+  .bio-text a:hover {
     opacity: 0.75;
   }
 
-  .bio-content em {
+  .bio-text em {
     font-style: italic;
   }
 
@@ -269,25 +287,6 @@ const currentYear = new Date().getFullYear();
     margin-bottom: 0;
   }
 
-  /* Personal */
-  .personal-section {
-    padding: 4rem 0;
-    border-left: 4px solid var(--color-accent);
-    margin: 0;
-  }
-
-  .personal-section .container {
-    padding-left: 3rem;
-  }
-
-  .personal-content {
-    max-width: 680px;
-    font-size: 1.125rem;
-    line-height: 1.85;
-    color: var(--color-dark);
-    font-style: italic;
-  }
-
   /* CTA */
   .cta-section {
     padding: 5rem 0;
@@ -328,87 +327,23 @@ const currentYear = new Date().getFullYear();
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   }
 
-  /* Footer */
-  .footer {
-    background-color: var(--color-primary);
-    color: white;
-    padding: 3rem 0 2rem;
-  }
-
-  .footer-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
-
-  .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .logo-icon-small {
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 700;
-    font-size: 1.25rem;
-    color: white;
-    border: 2px solid white;
-    border-radius: 4px;
-  }
-
-  .footer-logo-text {
-    display: flex;
-    flex-direction: column;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 700;
-    font-size: 0.875rem;
-    letter-spacing: 0.05em;
-    line-height: 1.2;
-  }
-
-  .footer-tagline {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 1rem;
-    opacity: 0.9;
-  }
-
-  .footer-bottom {
-    text-align: center;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 0.875rem;
-    opacity: 0.7;
-  }
-
   /* Responsive */
+  @media (max-width: 900px) {
+    .bios-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
   @media (max-width: 768px) {
     .intro-section {
       padding: 4rem 0 2.5rem;
     }
 
-    .intro-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
+    .bios-section {
+      padding: 2rem 0 3rem;
     }
 
-    .intro-photo {
-      order: -1;
-    }
-
-    .intro-photo img {
-      width: 160px;
-      height: 160px;
-    }
-
-    .bio-section,
     .technical-section,
     .cta-section {
       padding: 3rem 0;
@@ -423,22 +358,10 @@ const currentYear = new Date().getFullYear();
       gap: 2rem;
     }
 
-    .personal-section {
-      padding: 3rem 0;
-    }
-
-    .personal-section .container {
-      padding-left: 2rem;
-    }
-
     .container {
       padding: 0 1.5rem;
     }
 
-    .footer-content {
-      flex-direction: column;
-      text-align: center;
-    }
   }
 
   @media (max-width: 480px) {
