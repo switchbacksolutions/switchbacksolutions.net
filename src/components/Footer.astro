@@ -16,7 +16,11 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="/work" class="footer-nav-link">Portfolio</a>
+      <a href="/blog" class="footer-nav-link">Blog</a>
+      <a href="/about" class="footer-nav-link">About</a>
       <a href="/trails" class="footer-nav-link">Trails</a>
+      <a href="/contact" class="footer-nav-link">Contact</a>
     </nav>
 
     <div class="footer-bottom">
@@ -85,8 +89,9 @@ const currentYear = new Date().getFullYear();
 
   .footer-nav {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem 2rem;
     margin-bottom: 2rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
